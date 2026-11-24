@@ -1,6 +1,10 @@
 # Changelog
 
+## v2
+- New home page (header, hero, sidebar, cards, footer, social icons).
+- Added About, Contact and Disclaimer pages.
+- Games moved to games.html (old index.html).
+- Shared style: assets/css/site.css, assets/js/site.js (set email, phone and social links in site.js).
+
 ## v1
-- Kids Corner moved to its own repository, taken from SevaSphere_Full_v4_12 (kids-corner.html -> index.html).
-- Links to SevaSphere and Class 2-5 page (kids-classes.html) now point to the SevaSphere site.
-- Added web manifest, sitemap, robots, 404, offline copy, lessons/ folder.
+- Kids Corner moved to its own repository from SevaSphere_Full_v4_12.
