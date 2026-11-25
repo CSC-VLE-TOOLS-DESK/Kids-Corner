@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1
+- Home page shows all 38 picture games as the original picture cards (3D images, colours, stars). Each card opens its game.
+- Lesson cards use pictures. Light theme always (no automatic dark mode).
+
 ## v3
 - New site design from kids-corner-site.zip (header, hero, class sidebars, subjects, cards, footer with social links).
 - 26 lessons and 26 quizzes for KG to Class 5 (assets/js/data.js), shown in the catalog.

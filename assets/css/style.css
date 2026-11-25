@@ -1,6 +1,6 @@
 :root{--bg:#f5f1ff;--ink:#1d1340;--mute:#625a82;--card:#fff;--line:#ded4fb;--v:#5b2fc9;--v2:#7b4ff0;--vd:#3a1b94;--y:#ffc928;--yd:#b88900;--k:#ff6b6b;--gr:#22c55e;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150e2e;--ink:#f1ecff;--mute:#b3a9d6;--card:#221848;--line:#33256b}}
+
 :root[data-theme="dark"]{--bg:#150e2e;--ink:#f1ecff;--mute:#b3a9d6;--card:#221848;--line:#33256b}
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
 *{box-sizing:border-box}
@@ -101,3 +101,20 @@ footer{margin-top:60px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.chip{border:2px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:700;border-radius:14px;padding:6px 12px;cursor:pointer}.chip[aria-pressed=true]{background:var(--y);color:#2b1700;border-color:var(--y)}
 .qh{display:flex;justify-content:space-between;color:var(--mute);font-weight:700}.qo{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
 .opt{font:inherit;font-weight:700;font-size:1.15rem;padding:16px;border-radius:18px;border:3px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}.opt:hover:not(:disabled){border-color:var(--v2)}.opt.ok{background:#22c55e;color:#fff;border-color:#22c55e}.opt.no{background:var(--k);color:#fff;border-color:var(--k)}
+.c1{--a:#ef4444;--b:#b91c1c}.c2{--a:#f97316;--b:#c2410c}.c3{--a:#eab308;--b:#a16207}.c4{--a:#22c55e;--b:#15803d}.c5{--a:#14b8a6;--b:#0f766e}.c6{--a:#0ea5e9;--b:#0369a1}.c7{--a:#6366f1;--b:#4338ca}.c8{--a:#a855f7;--b:#7e22ce}.c9{--a:#ec4899;--b:#be185d}.c10{--a:#f43f5e;--b:#be123c}
+.kc-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}.kc-tab{border:3px solid #fff;background:#fff;color:#2b2350;padding:6px 16px;border-radius:999px;font:800 1rem "Baloo 2",inherit;cursor:pointer;box-shadow:0 4px 0 #cfc3f5;min-height:42px}.kc-tab[aria-pressed="true"]{background:#7c4dff;color:#fff;border-color:#7c4dff;box-shadow:0 4px 0 #4c2bb3}
+.kc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px}
+.kc-card{--a:#7c4dff;--b:#4c2bb3;display:flex;flex-direction:column;text-decoration:none;color:#2b2350;background:#fff;border-radius:24px;overflow:hidden;border:3px solid #fff;box-shadow:0 7px 0 var(--b),0 16px 26px rgba(40,20,90,.18);transition:transform .18s,box-shadow .18s}
+.kc-card:hover{transform:translateY(-6px);box-shadow:0 11px 0 var(--b),0 22px 30px rgba(40,20,90,.22)}.kc-card:active{transform:translateY(3px);box-shadow:0 3px 0 var(--b)}
+.kc-thumb{display:grid;place-items:center;padding:14px;background:linear-gradient(135deg,var(--a),var(--b));position:relative;overflow:hidden}.kc-thumb::after{content:"";position:absolute;right:-12%;bottom:-40%;width:60%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.16)}
+.kc-thumb img{width:min(120px,42%);min-width:92px;height:auto;filter:drop-shadow(0 6px 5px rgba(0,0,0,.3));position:relative;z-index:1;transition:transform .25s}.kc-card:hover .kc-thumb img{transform:scale(1.1) rotate(-5deg)}
+.kc-body{display:flex;flex-direction:column;gap:2px;padding:14px 16px 16px;flex:1}.kc-lv{font-size:.74rem;font-weight:800;color:var(--b);text-transform:uppercase;letter-spacing:.05em}.kc-body strong{font-size:1.25rem;line-height:1.15}.kc-hi{color:var(--b);font-weight:700;font-size:.98rem}.kc-body small{color:#5b5780;font-size:.88rem;line-height:1.35;margin-top:4px;flex:1}
+.kc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}.kc-foot em{font-style:normal;background:var(--a);color:#fff;padding:6px 16px;border-radius:999px;font-weight:800;font-size:.9rem;box-shadow:0 3px 0 var(--b)}.kc-stars i{font-style:normal;color:#d9d4ea;margin-right:2px}.kc-stars i.on{color:#f59e0b}
+.art img.artimg{width:84px;height:84px;filter:drop-shadow(0 5px 4px rgba(0,0,0,.3));position:relative}
+@media(max-width:520px){.kc-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}.kc-card{border-radius:18px}}
+
+/* link to SevaSphere, shown when the nav is hidden */
+.seva-btn{display:none}.ql a{display:inline-block}
+@media(max-width:1100px){.seva-btn{display:inline-block;margin-left:auto}.seva-btn+.btn{margin-left:8px}.top .seva-btn{padding:8px 14px;font-size:.95rem}.top .btn.g{padding:8px 14px;font-size:.95rem}}
+@media(max-width:380px){.top .btn.g{display:none}}
+@media(max-width:520px){.top{gap:8px}.logo{font-size:1.2rem}}
