@@ -8,4 +8,7 @@ Free picture games for KG, UKG and Class 1 in English and Hindi (38 games). Stat
 - Change a picture: replace the PNG in `assets/kids/` with the same name (about 400x400).
 - Future lessons: add under `lessons/`.
 
-Version: Kids Corner repo v1 (moved out of SevaSphere v4_12).
+Version: Kids Corner repo v1 (v3).
+
+## Add or edit lessons
+Open `assets/js/data.js`, find `LESSONS`, and add an entry like the others. Each lesson also gets a quiz automatically.

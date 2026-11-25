@@ -1,10 +1,14 @@
 # Changelog
 
-## v2
-- New home page (header, hero, sidebar, cards, footer, social icons).
+## v3
+- New site design from kids-corner-site.zip (header, hero, class sidebars, subjects, cards, footer with social links).
+- 26 lessons and 26 quizzes for KG to Class 5 (assets/js/data.js), shown in the catalog.
+- lesson.html: flip-card lessons with read-aloud, plus quiz games with stars.
+- games.html: the 38 picture games for KG, UKG and Class 1.
 - Added About, Contact and Disclaimer pages.
-- Games moved to games.html (old index.html).
-- Shared style: assets/css/site.css, assets/js/site.js (set email, phone and social links in site.js).
+
+## v2
+- Earlier home page, About, Contact, Disclaimer (replaced in v3).
 
 ## v1
-- Kids Corner moved to its own repository from SevaSphere_Full_v4_12.
+- Kids Corner moved out of SevaSphere.
