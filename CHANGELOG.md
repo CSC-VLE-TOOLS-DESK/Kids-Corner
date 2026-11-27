@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.3
+- Every lesson quiz (A to Z Phonics, Hindi, Colours, Numbers, Add, Body parts and all others) now has the same voice quiz: a girl reads the question ("Guess!" / "Pehchano!"), Chintu sits on a table and flies saying Good, Well done, Shabash, Marvel, Good job (Hindi lessons: शाबाश, वाह). Wrong answer: "Try again" or "Phir se koshish karo". Shared code: assets/js/quizfx.js.
+- Answer cards use pictures on white cards instead of coloured backgrounds. Tables page sidebar and rows also use pictures.
+- Flip cards show the picture on the back.
+
 ## v3.2
 - New page tables-quiz.html: Tables 2 to 10 Quiz. A girl's voice reads each question, Chintu cheers a right answer (Well done, Shabash, Good, Marvel, Good job), a wrong answer plays "Try again". Learn tab shows each table with pictures.
 - Class 1 icon = single child picture, Class 2 icon = two kids picture (sidebar and lesson cards).

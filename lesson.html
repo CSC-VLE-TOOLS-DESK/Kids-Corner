@@ -4,7 +4,7 @@
 <link rel="canonical" href="https://csc-vle-tools-desk.github.io/Kids-Corner/lesson.html"><link rel="manifest" href="site.webmanifest"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" href="assets/img/logo.webp" type="image/webp">
 <meta property="og:title" content="Lesson – Kids Corner"><meta property="og:description" content="A short Kids Corner lesson with flip cards, read-aloud and a quiz."><meta property="og:image" content="https://csc-vle-tools-desk.github.io/Kids-Corner/og-image.png"><meta property="og:url" content="https://csc-vle-tools-desk.github.io/Kids-Corner/lesson.html">
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css"></head>
+<link rel="stylesheet" href="assets/css/style.css"><style>.fc .em img{height:110px;width:auto;max-width:90%;object-fit:contain;filter:drop-shadow(0 6px 6px rgba(0,0,0,.2))}</style></head>
 <body><div class="wrap">
 <header class="top"><a class="logo" href="index.html"><img src="assets/img/logo.webp" alt="">Kids Corner</a>
 <nav><a href="index.html">Home</a><a href="games.html">Picture Games</a><a href="index.html#browse">Lessons</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="https://csc-vle-tools-desk.github.io/SewaSphere/" rel="noopener">SevaSphere</a></nav>
@@ -12,7 +12,7 @@
 <main class="pg"><div class="lv"><a class="back" href="index.html#browse">← All lessons</a>
 <div class="panel" id="app"><h1>Loading…</h1></div>
 <noscript><div class="panel">Kids Corner needs JavaScript. Please turn it on in your browser.</div></noscript></div>
-<script src="assets/js/data.js"></script>
+<script src="assets/js/data.js"></script><script src="assets/js/quizfx.js"></script>
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)},app=$("app");
@@ -50,7 +50,7 @@ function lesson(){
   app.innerHTML='<h1>'+L.e+' '+esc(L.t)+'</h1><p>'+esc(L.d)+' · Best score: <b>'+stars(store(L.id))+'</b></p>'+
   '<div class="qh"><span>Card '+(i+1)+' of '+c.length+'</span><span>Tap the card to flip</span></div>'+
   '<div class="fc" id="fc" role="button" tabindex="0" aria-label="Flip card">'+(flip?
-    '<div><div class="sm">'+esc(k[0])+'</div><div class="big" style="font-size:clamp(1.8rem,6vw,3rem)">'+esc(k[1])+'</div>'+(k[2]?'<div class="em">'+k[2]+'</div>':'')+'</div>':
+    '<div><div class="sm">'+esc(k[0])+'</div><div class="big" style="font-size:clamp(1.8rem,6vw,3rem)">'+esc(k[1])+'</div>'+((KCFX.pic(k[1],c)||k[2])?'<div class="em">'+(KCFX.pic(k[1],c)||k[2])+'</div>':'')+'</div>':
     '<div><div class="big">'+esc(k[0])+'</div>'+(k[2]&&!/^\d|^[A-Za-z]$/.test(k[0])?'':'')+'<div class="sm">Tap to see more</div></div>')+'</div>'+
   '<div class="nv"><button class="btn" id="pv"'+(i?'':' disabled')+'>◀ Back</button><button class="btn" id="rd">🔊 Read aloud</button><button class="btn" id="nx"'+(i<c.length-1?'':' disabled')+'>Next ▶</button></div>'+
   '<p style="text-align:center;margin-top:18px"><button class="btn y" id="pl">🎮 Play the quiz</button></p>';
@@ -63,18 +63,26 @@ function lesson(){
 }
 function quiz(){
  if(L.id==="c2-tables"){location.href="tables-quiz.html";return}
- var Q=makeQs(),n=0,sc=0;
+ var Q=makeQs(),n=0,sc=0,tries=0,locked=false,hi=lg==="hi-IN";
+ function nextQ(ms){setTimeout(function(){n++;n<Q.length?ask():done()},ms)}
  function ask(){
-  var q=Q[n];
-  app.innerHTML='<h1>'+L.e+' '+esc(L.t)+' – Quiz</h1><div class="qh"><span>Question '+(n+1)+' of '+Q.length+'</span><span>⭐ '+sc+'</span></div><h2>'+esc(q.q)+'</h2><div class="qo">'+q.o.map(function(o,k){return'<button class="opt" data-k="'+k+'">'+esc(o)+'</button>'}).join("")+'</div><div id="fb" aria-live="polite" style="min-height:2em;font-weight:800"></div>';
+  var q=Q[n];tries=0;locked=false;
+  app.innerHTML='<h1>'+L.e+' '+esc(L.t)+' – Quiz</h1><div class="qh"><span>Question '+(n+1)+' of '+Q.length+'</span><span>⭐ '+sc+'</span><button class="btn" id="sn" style="padding:4px 14px">'+(KCFX.isOn()?"🔊":"🔇")+'</button></div>'+
+  KCFX.perch()+'<h2 style="text-align:center;margin:6px 0">'+esc(q.q)+'</h2><p style="text-align:center;margin:0"><button class="btn" id="rp">🔊 '+(hi?"फिर से सुनो":"Read again")+'</button></p>'+
+  '<div class="qo kfx">'+q.o.map(function(o,k){return'<button class="opt" data-k="'+k+'">'+KCFX.pic(o,L.cards)+'<span>'+esc(o)+'</span></button>'}).join("")+'</div><div id="fb" aria-live="polite" style="min-height:2em;font-weight:800;text-align:center;font-size:1.3rem"></div>';
+  $("rp").onclick=function(){KCFX.ask(q.q,hi)};$("sn").onclick=function(){KCFX.mute(KCFX.isOn());this.textContent=KCFX.isOn()?"🔊":"🔇"};
+  setTimeout(function(){KCFX.ask(q.q,hi)},400);
   document.querySelectorAll(".opt").forEach(function(b){b.onclick=function(){
-   var ok=q.o[+b.dataset.k]===q.a;document.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(q.o[+x.dataset.k]===q.a)x.classList.add("ok")});
-   if(ok){sc++;$("fb").textContent="🎉 Great job!"}else{b.classList.add("no");$("fb").textContent="Not quite. The answer is "+q.a+"."}
-   setTimeout(function(){n++;n<Q.length?ask():done()},1200)}});
+   if(locked||b.disabled)return;var ok=q.o[+b.dataset.k]===q.a;
+   if(ok){locked=true;document.querySelectorAll(".opt").forEach(function(x){x.disabled=true});b.classList.add("ok");if(!tries)sc++;$("fb").textContent=KCFX.good(hi)+" 🎉";nextQ(2300)}
+   else{tries++;b.classList.add("no");b.disabled=true;$("fb").textContent=KCFX.bad(hi)+" 💪";
+    if(tries>=2){locked=true;document.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(q.o[+x.dataset.k]===q.a)x.classList.add("ok")});$("fb").textContent=(hi?"सही उत्तर: ":"The answer is ")+q.a;nextQ(3200)}}
+  }});
  }
  function done(){
   var s=sc>=Q.length-0?3:sc>=Q.length-2?2:sc>=Q.length/2?1:0;store(L.id,s);
   app.innerHTML='<div style="text-align:center"><div style="font-size:3rem">'+(s?'🏆':'💪')+'</div><h1>You scored '+sc+' out of '+Q.length+'</h1><div style="font-size:3rem">'+stars(s)+'</div><p>'+(s===3?'Perfect! Amazing work!':s?'Well done! Try again for more stars.':'Keep practising. Read the lesson again and try once more.')+'</p><div class="nv"><button class="btn y" id="ag">Play again</button><button class="btn" id="bl">Back to lesson</button><a class="btn" href="index.html#browse">All lessons</a></div></div>';
+  if(s){KCFX.tone([523,659,784,1047],.13);KCFX.confetti();setTimeout(function(){KCFX.speak(hi?"शाबाश!":(s===3?"Shabash! Perfect score!":"Well done!"),{lang:hi?"hi":"en",pitch:hi?null:1.8,rate:1.02})},600)}
   $("ag").onclick=quiz;$("bl").onclick=lesson;
  }
  ask();

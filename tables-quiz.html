@@ -10,6 +10,11 @@
 .tq .side{position:sticky;top:12px}
 .tq .side .cls{margin-bottom:10px}
 .tq .cls .bd{font-weight:800;font-size:1.7rem}
+.tq .cls .bd.pic{background:#fff;border:3px solid var(--c);position:relative;width:62px;height:62px;border-radius:18px}
+.tq .cls .bd.pic img{width:40px;height:40px;object-fit:contain}
+.tq .cls .bd.pic i{position:absolute;right:-8px;bottom:-8px;min-width:26px;height:26px;border-radius:13px;background:#fff;border:2px solid var(--c);color:var(--c);font:800 .95rem/22px inherit;font-style:normal;text-align:center}
+.tq .cls{background:#fff}
+.rw{background:#fff!important;border-color:var(--line,#e6e0f5)!important}.bub2{display:none}
 .tq .cls small{white-space:nowrap}
 .mn{background:var(--card,#fff);border-radius:30px;padding:22px 24px 26px;box-shadow:0 8px 0 var(--line,#e6e0f5);position:relative;overflow:hidden;min-height:520px}
 .hd{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -84,6 +89,7 @@
 <div><h4>Quick Links</h4><div class="ql"><a href="index.html">Home</a> • <a href="games.html">Games</a> • <a href="index.html#browse">Lessons</a> • <a href="contact.html">Contact Us</a> • <a href="about.html">About</a> • <a href="disclaimer.html">Disclaimer</a></div></div></div>
 <div class="copy">© 2026 Kids Corner – part of SevaSphere, CSC VLE Tools Desk.</div></footer></div>
 <div id="cf" aria-hidden="true"></div>
+<script src="assets/js/quizfx.js"></script>
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)},R=function(n){return Math.floor(Math.random()*n)};
@@ -110,13 +116,13 @@ function tryAgain(){tone([260,200],.13,"triangle");setTimeout(function(){clip("c
 function confetti(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;var b=$("cf"),e=["⭐","🎈","🌟","🎉","✨","🍎","🎊"];for(var i=0;i<22;i++){var s=document.createElement("span");s.textContent=e[R(e.length)];s.style.left=R(100)+"%";s.style.fontSize=18+R(22)+"px";s.style.animationDuration=1.4+Math.random()*1.3+"s";b.appendChild(s);(function(x){setTimeout(function(){x.remove()},3000)})(s)}}
 function say(a,b){return WORD[a]+" "+(a===1?"":"")+"times "+WORD[b]+" equals"}
 /* ---------- sidebar ---------- */
-function side(){var h="";TB.forEach(function(t,i){h+='<button class="cls" style="--c:'+COL[i]+'" data-t="'+t+'" aria-pressed="'+(!mixed&&cur===t)+'"><span class="bd">'+t+'</span><span>Table of '+t+'<small>'+t+', '+2*t+', '+3*t+' …</small></span><b>›</b></button>'});
+function side(){var h="";TB.forEach(function(t,i){h+='<button class="cls" style="--c:'+COL[i]+'" data-t="'+t+'" aria-pressed="'+(!mixed&&cur===t)+'"><span class="bd pic"><img src="assets/kids/'+PIC[i]+'.png" alt=""><i>'+t+'</i></span><span>Table of '+t+'<small>'+t+', '+2*t+', '+3*t+' …</small></span><b>›</b></button>'});
  h+='<button class="cls" style="--c:#0ea5e9" data-t="0" aria-pressed="'+mixed+'"><span class="bd kid"><img src="assets/kids/kids3.webp" alt=""></span><span>Mixed Quiz<small>Tables 2 to 10</small></span><b>›</b></button>';$("tl").innerHTML=h}
 $("tl").onclick=function(e){var b=e.target.closest(".cls");if(!b)return;var t=+b.dataset.t;mixed=!t;if(t)cur=t;side();view();tone([520,780],.07)};
 /* ---------- views ---------- */
 function setMode(m){mode=m;$("tbL").setAttribute("aria-selected",m==="learn");$("tbQ").setAttribute("aria-selected",m==="quiz");view()}
 $("tbL").onclick=function(){setMode("learn")};$("tbQ").onclick=function(){setMode("quiz")};
-$("snd").onclick=function(){on=!on;this.setAttribute("aria-pressed",on);this.textContent=on?"🔊 Sound on":"🔇 Sound off";if(!on)try{speechSynthesis.cancel()}catch(e){}};
+$("snd").onclick=function(){on=!on;this.setAttribute("aria-pressed",on);this.textContent=on?"🔊 Sound on":"🔇 Sound off";KCFX.mute(!on);if(!on)try{speechSynthesis.cancel()}catch(e){}};
 function theme(){var c=mixed?"#0ea5e9":COL[TB.indexOf(cur)];$("mn").style.setProperty("--c",c)}
 function view(){theme();$("ttl").textContent=mixed?"Mixed Tables 2 to 10":"Table of "+cur;
  $("sub").textContent=mode==="learn"?"Tap any line to hear it.":"Listen to the girl, then tap the right answer.";
@@ -137,16 +143,16 @@ function quiz(){Q=build();qi=0;sc=0;res=[];ask()}
 function dots(){var h="";for(var i=0;i<N;i++)h+='<i class="'+(res[i]||(i===qi?"now":""))+'"></i>';return h}
 function ask(){if(qi>=N)return end();var q=Q[qi];tries=0;locked=false;
  $("vw").innerHTML='<div class="qz"><div class="qtop"><span>Question '+(qi+1)+' / '+N+'</span><div class="dots">'+dots()+'</div><span>⭐ '+sc+'</span></div>'+
- '<div class="stage"><div class="chin" id="ch"><img src="assets/kids/mascot-chintu.png" alt="Chintu the parrot"></div><div class="qbub"><div class="q">'+q.a+' <em>×</em> '+q.b+' = ?</div><button class="say" id="rp">🔊 Read again</button></div></div>'+
+ '<div class="stage">'+KCFX.perch()+'<div class="qbub"><div class="q">'+q.a+' <em>×</em> '+q.b+' = ?</div><button class="say" id="rp">🔊 Read again</button></div></div>'+
  '<div class="ops">'+q.o.map(function(o){return '<button data-v="'+o+'">'+o+'</button>'}).join("")+'</div><div id="fb"></div></div>';
- $("rp").onclick=function(){speak(say(q.a,q.b)+"?")};setTimeout(function(){speak(say(q.a,q.b)+"?")},350);
+ function rq(){speak((R(2)?"Guess! ":"Pehchano! ")+say(q.a,q.b)+"?")}$("rp").onclick=rq;setTimeout(rq,350);
  document.querySelector(".ops").onclick=function(e){var b=e.target.closest("button");if(!b||b.disabled||locked)return;pick(b,q)}}
 function bump(c){var e=$("ch");if(!e)return;e.className="chin";void e.offsetWidth;e.className="chin "+c}
 function pick(b,q){var ok=+b.dataset.v===q.ans;
- if(ok){locked=true;b.classList.add("ok");Array.prototype.forEach.call(document.querySelectorAll(".ops button"),function(x){x.disabled=true});$("fb").textContent=praise()+" 🎉";bump("hop");confetti();if(!tries){sc++;res[qi]="ok"}else res[qi]="no";setTimeout(function(){qi++;ask()},2000);return}
- tries++;b.classList.add("no");b.disabled=true;bump("sad");tryAgain();
+ if(ok){locked=true;b.classList.add("ok");Array.prototype.forEach.call(document.querySelectorAll(".ops button"),function(x){x.disabled=true});$("fb").textContent=KCFX.good(false)+" 🎉";if(!tries){sc++;res[qi]="ok"}else res[qi]="no";setTimeout(function(){qi++;ask()},2000);return}
+ tries++;b.classList.add("no");b.disabled=true;var bt=KCFX.bad(false);
  if(tries>=2){locked=true;Array.prototype.forEach.call(document.querySelectorAll(".ops button"),function(x){x.disabled=true;if(+x.dataset.v===q.ans)x.classList.add("ok")});res[qi]="no";$("fb").textContent="The answer is "+q.ans;setTimeout(function(){speak(say(q.a,q.b)+" "+q.ans)},1100);setTimeout(function(){qi++;ask()},3200)}
- else $("fb").textContent="Try again! 💪"}
+ else $("fb").textContent=bt+" 💪"}
 function end(){var s=sc>=N?3:sc>=N-2?2:sc>=N/2?1:0;try{var k=JSON.parse(localStorage.getItem("kc_lessons")||"{}");if(s>(k["c2-tables"]||0)){k["c2-tables"]=s;localStorage.setItem("kc_lessons",JSON.stringify(k))}localStorage.setItem("kcStars",(+localStorage.getItem("kcStars")||0)+sc)}catch(e){}
  var st="";for(var i=1;i<=3;i++)st+='<span style="color:'+(i<=s?"#f59e0b":"#d9d4ea")+'">★</span>';
  $("vw").innerHTML='<div class="end"><img src="assets/kids/'+(s>1?"kids-play":"class1-child")+'.webp" alt=""><h2>You scored '+sc+' out of '+N+'</h2><div class="st">'+st+'</div><p>'+(s===3?"Perfect! Amazing work!":s?"Well done! Try again for more stars.":"Keep practising. Learn the table once more.")+'</p><div class="nv"><button class="btn y" id="ag">▶ Play again</button><button class="btn" id="bl">📖 Learn the table</button></div></div>';
