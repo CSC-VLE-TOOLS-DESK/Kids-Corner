@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.5
+- New story game story-chat.html "Where is the Water?": a boy and a girl chat (different voices), with a picture for every place from the pot to the whole world, a path of places that lights up, English and Hindi, Auto story or Tap to play, slow or normal speed, and a laughing ending. Listed in the lessons under Class 2 GK.
+
 ## v3.4
 - All 38 Picture Games (games.html) now use the same voice and Chintu: a girl reads each question ("Guess!" / "Pehchano!"), Chintu flies on his table and says Good, Well done, Shabash (Hindi: शाबाश, वाह) for a right answer, and Try again / Phir se koshish karo for a wrong one. Games without a quiz layout show Chintu on a table at the bottom left.
 

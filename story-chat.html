@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>💬 Where is the Water? – Story Game – Kids Corner</title>
+<meta name="description" content="A boy and a girl chat with voice and pictures. Follow the water from the pot to the kitchen, house, village, state, country and the whole world.">
+<link rel="canonical" href="https://csc-vle-tools-desk.github.io/Kids-Corner/story-chat.html"><link rel="manifest" href="site.webmanifest"><link rel="icon" href="assets/img/logo.webp" type="image/webp">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.sc{background:var(--card,#fff);border-radius:30px;padding:20px 22px 24px;box-shadow:0 8px 0 var(--line,#e6e0f5);margin:8px 0 30px}
+.sc h1{margin:0;font-size:clamp(1.5rem,3.6vw,2.3rem)}.sc .sub{margin:4px 0 12px;color:var(--mute,#6b6290)}
+.tb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.tb .grp{display:flex;gap:6px;background:var(--bg,#f4f1fb);padding:5px;border-radius:999px}
+.tb button,.ctl button{font:inherit;font-weight:800;border:0;border-radius:999px;padding:8px 16px;cursor:pointer;background:transparent;color:var(--ink,#1d1340)}
+.tb button[aria-pressed=true]{background:#7c4dff;color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.2)}
+.stage{display:grid;grid-template-columns:150px 1fr 150px;gap:12px;align-items:end}
+.who{text-align:center}
+.who .fr{height:210px;width:140px;margin:0 auto;border:5px solid var(--c);border-radius:26px;background:#fff;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;box-shadow:0 7px 0 rgba(0,0,0,.1);transition:transform .2s}
+.who img{height:100%;width:auto;max-width:none;object-fit:cover;object-position:top}
+.who b{display:block;margin-top:8px;color:var(--c)}
+.who.talk .fr{animation:tk .45s infinite alternate;box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 30%,transparent),0 7px 0 rgba(0,0,0,.1)}
+@keyframes tk{to{transform:translateY(-10px) rotate(-2deg)}}
+.scene{background:#fff;border:4px dashed #cdbff7;border-radius:28px;padding:12px 12px 16px;text-align:center;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.scene .pic{height:130px;display:flex;align-items:center;justify-content:center}
+.scene .pic img{height:130px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 6px 6px rgba(0,0,0,.2))}
+.scene .pic span{font-size:6.5rem;line-height:1}
+.scene.pop .pic{animation:pp .6s}
+@keyframes pp{0%{transform:scale(.3) rotate(-12deg);opacity:0}70%{transform:scale(1.15)}100%{transform:none;opacity:1}}
+.scene h2{margin:0;font-size:clamp(1.2rem,3vw,1.7rem)}
+.path{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:4px}
+.path i{font-style:normal;width:30px;height:30px;border-radius:50%;background:#efeaff;display:flex;align-items:center;justify-content:center;font-size:1rem;opacity:.35;transition:.3s}
+.path i.on{opacity:1;background:#fff;border:2px solid #7c4dff;transform:scale(1.1)}
+.log{margin-top:16px;max-height:340px;overflow:auto;padding:6px 4px;scroll-behavior:smooth;display:flex;flex-direction:column;gap:10px}
+.ln{display:flex;gap:8px;align-items:flex-end;animation:in .3s}
+.ln.g{flex-direction:row-reverse}
+@keyframes in{from{opacity:0;transform:translateY(10px)}}
+.ln .mini{width:44px;height:44px;border-radius:50%;border:3px solid var(--c);overflow:hidden;flex:none;background:#fff}
+.ln .mini img{width:100%;height:100%;object-fit:cover;object-position:top}
+.ln .bb{background:#fff;border:3px solid var(--c);border-radius:20px;padding:8px 14px;font-weight:700;font-size:clamp(1.05rem,2.6vw,1.35rem);max-width:78%;display:flex;gap:10px;align-items:center}
+.ln.b .bb{border-bottom-left-radius:4px}.ln.g .bb{border-bottom-right-radius:4px}
+.ln .bb .ic{font-size:1.6rem;flex:none}.ln .bb .ic img{height:34px;width:auto}
+.ln.b{--c:#3b82f6}.ln.g{--c:#ec4899}
+.ask{display:block;margin:12px auto 0;font:inherit;font-weight:800;font-size:1.25rem;border:0;border-radius:22px;padding:14px 24px;background:#3b82f6;color:#fff;cursor:pointer;box-shadow:0 6px 0 #1d4ed8;animation:bt 1s infinite alternate}
+@keyframes bt{to{transform:translateY(-4px)}}
+.ask:active{transform:translateY(4px);box-shadow:none}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+.ctl button{background:var(--bg,#f4f1fb);box-shadow:0 4px 0 rgba(0,0,0,.1)}
+.ctl .go{background:#22a559;color:#fff}
+.end{text-align:center;margin-top:12px;animation:in .4s}
+.end img{height:130px;filter:drop-shadow(0 6px 6px rgba(0,0,0,.2))}
+.end h2{margin:4px 0}
+#cf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+#cf span{position:absolute;top:-40px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+@media (max-width:720px){.stage{grid-template-columns:96px 1fr 96px;gap:6px}.who .fr{width:90px;height:140px;border-width:4px}.scene{padding:8px;min-height:200px}.scene .pic,.scene .pic img{height:90px}.scene .pic span{font-size:4.5rem}.ln .bb{max-width:84%}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="index.html"><img src="assets/img/logo.webp" alt="">Kids Corner</a>
+<nav><a href="index.html">Home</a><a href="games.html">Picture Games</a><a href="index.html#browse">Lessons</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="https://csc-vle-tools-desk.github.io/SewaSphere/" rel="noopener">SevaSphere</a></nav>
+<a class="btn g" href="https://wa.me/919050680789">Chat with Us</a></header>
+<main class="pg"><a class="back" href="index.html#browse">← All lessons</a>
+<section class="sc" aria-live="polite">
+ <h1 id="ttl">💬 Where is the Water?</h1><p class="sub" id="sub">A story with a boy and a girl. Listen and follow the water!</p>
+ <div class="tb">
+  <div class="grp" role="group" aria-label="Language"><button id="lE" aria-pressed="true">English</button><button id="lH" aria-pressed="false">हिन्दी</button></div>
+  <div class="grp" role="group" aria-label="Mode"><button id="mA" aria-pressed="true">▶ Auto story</button><button id="mT" aria-pressed="false">👆 Tap to play</button></div>
+  <div class="grp" role="group" aria-label="Speed"><button id="sS" aria-pressed="false">🐢 Slow</button><button id="sN" aria-pressed="true">Normal</button></div>
+  <div class="grp"><button id="snd" aria-pressed="true">🔊 Sound on</button></div>
+ </div>
+ <div class="stage">
+  <div class="who" id="wB" style="--c:#3b82f6"><div class="fr"><img src="assets/kids/story-boy.webp" alt="Boy"></div><b id="nB">Boy</b></div>
+  <div class="scene" id="sc"><div class="pic" id="pic"><span>🥛</span></div><h2 id="sn">A glass of water</h2><div class="path" id="path" aria-hidden="true"></div></div>
+  <div class="who" id="wG" style="--c:#ec4899"><div class="fr"><img src="assets/kids/story-girl.webp" alt="Girl"></div><b id="nG">Girl</b></div>
+ </div>
+ <div class="log" id="log"></div>
+ <div id="ex"></div>
+ <div class="ctl"><button class="go" id="bp">▶ Start story</button><button id="bs">⏭ Next line</button><button id="br">⏮ Start again</button></div>
+</section>
+</main>
+<footer><div class="ft"><div><h4>Kids Corner</h4><p>Free games and easy lessons for KG to Class 5.</p></div>
+<div><h4>SevaSphere</h4><a class="btn y" style="font-size:1rem;padding:10px 20px" href="https://csc-vle-tools-desk.github.io/SewaSphere/" rel="noopener">Visit SevaSphere ↗</a></div>
+<div><h4>Quick Links</h4><div class="ql"><a href="index.html">Home</a> • <a href="games.html">Games</a> • <a href="index.html#browse">Lessons</a> • <a href="contact.html">Contact Us</a> • <a href="about.html">About</a> • <a href="disclaimer.html">Disclaimer</a></div></div></div>
+<div class="copy">© 2026 Kids Corner – part of SevaSphere, CSC VLE Tools Desk.</div></footer></div>
+<div id="cf" aria-hidden="true"></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},R=function(n){return Math.floor(Math.random()*n)};
+/* places: [en name, en "in ..", hi name, hi "में ..", emoji, picture file] */
+var PL={
+ water:["the water","in the water","पानी","पानी में","💧","pond"],
+ glass:["a glass of water","","एक गिलास पानी","","🥛","full-glass"],
+ pot:["the pot","in the pot","मटका","मटके में","🏺",""],
+ kitchen:["the kitchen","in the kitchen","रसोई","रसोई में","🍳",""],
+ house:["the house","in the house","घर","घर में","🏠","house"],
+ street:["the street","in the street","गली","गली में","🛣️",""],
+ colony:["our colony (mohalla)","in our colony (mohalla)","हमारा मोहल्ला","हमारे मोहल्ले में","🏘️",""],
+ village:["our village","in our village","हमारा गाँव","हमारे गाँव में","🌾",""],
+ block:["our block (khand)","in our block (khand)","हमारा खंड (ब्लॉक)","हमारे खंड (ब्लॉक) में","🏢",""],
+ tehsil:["our tehsil","in our tehsil","हमारी तहसील","हमारी तहसील में","🏛️",""],
+ district:["our district","in our district","हमारा ज़िला","हमारे ज़िले में","🗺️",""],
+ state:["our state","in our state","हमारा राज्य","हमारे राज्य में","🏞️",""],
+ country:["our country","in our country","हमारा देश","हमारे देश में","🚩",""],
+ world:["the world","in the world","दुनिया","दुनिया में","🌍",""]
+};
+var CH=["water","pot","kitchen","house","street","colony","village","block","tehsil","district","state","country","world","water"];
+/* build the script: [who, en, hi, scene] */
+var S=[["B","Give me a glass of water.","मुझे एक गिलास पानी दो।","glass"],["G","Go and take it yourself.","जाओ, खुद ले लो।","glass"]];
+for(var i=0;i<CH.length-1;i++){var a=PL[CH[i]],b=PL[CH[i+1]],ka=CH[i],kb=CH[i+1];
+ var qe=i===0?"Tell me, where is the water?":"Where is "+a[0]+"?",qh=i===0?"बताओ, पानी कहाँ है?":a[2]+" कहाँ है?";
+ S.push(["B",qe,qh,ka]);
+ if(i===0)S.push(["G","In the pot.","मटके में।","pot"]);else S.push(["G",cap(b[1])+".",b[3]+"।",kb])}
+S.push(["B","Where is the water?","पानी कहाँ है?","water"]);
+S.push(["G","Aha ha ha! In the pot!","हा हा हा! मटके में!","pot"]);
+function cap(t){return t.charAt(0).toUpperCase()+t.slice(1)}
+/* state */
+var hi=false,tap=false,rate=.9,on=true,idx=0,playing=false,tok=0,maxPath=-1;
+/* voices */
+var V=[];function lv(){try{V=speechSynthesis.getVoices()||[]}catch(e){}}
+if("speechSynthesis" in window){lv();speechSynthesis.onvoiceschanged=lv}
+var FEM=/female|zira|samantha|heera|veena|neerja|aria|jenny|karen|tessa|susan|priya|kalpana|swara|moira|fiona|victoria|hazel|libby|sonia|lekha/i,
+    MAL=/\bmale\b|david|mark|ravi|hemant|prabhat|rishi|george|james|guy|ryan|madhur|daniel|alex|fred|rocko/i;
+function voice(lang,girl){var a=V.filter(function(v){return v.lang.toLowerCase().indexOf(lang)===0});
+ var f=a.filter(function(v){return FEM.test(v.name)}),m=a.filter(function(v){return MAL.test(v.name)&&!/female/i.test(v.name)});
+ var v=girl?(f[0]||null):(m[0]||null);return {v:v||a[0]||null,real:!!v}}
+function speak(text,girl,done){var fin=false,t0;function end(){if(fin)return;fin=true;clearTimeout(t0);done()}
+ if(!on||!("speechSynthesis" in window)){t0=setTimeout(end,1400+text.length*60/(rate+.2));return}
+ try{speechSynthesis.cancel();var lang=hi?"hi":"en",u=new SpeechSynthesisUtterance(text),pv=voice(lang,girl);u.lang=hi?"hi-IN":"en-IN";if(pv.v){u.voice=pv.v;u.lang=pv.v.lang}
+  u.rate=rate;u.pitch=girl?(pv.real?1.1:1.45):(pv.real?.95:.7);u.onend=end;u.onerror=end;speechSynthesis.speak(u);t0=setTimeout(end,3500+text.length*140)}catch(e){t0=setTimeout(end,2000)}}
+function tone(f,d,type){if(!on)return;try{window._ac=window._ac||new(window.AudioContext||window.webkitAudioContext)();var ac=window._ac,t=ac.currentTime;f.forEach(function(x,i){var o=ac.createOscillator(),g=ac.createGain();o.type=type||"sine";o.frequency.value=x;g.gain.setValueAtTime(.0001,t+i*d);g.gain.exponentialRampToValueAtTime(.3,t+i*d+.02);g.gain.exponentialRampToValueAtTime(.0001,t+(i+1)*d);o.connect(g);g.connect(ac.destination);o.start(t+i*d);o.stop(t+(i+1)*d+.03)})}catch(e){}}
+function confetti(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;var b=$("cf"),e=["⭐","🎈","💧","🎉","✨","🌍","🎊"];for(var i=0;i<26;i++){var s=document.createElement("span");s.textContent=e[R(e.length)];s.style.left=R(100)+"%";s.style.fontSize=18+R(22)+"px";s.style.animationDuration=1.4+Math.random()*1.4+"s";b.appendChild(s);(function(x){setTimeout(function(){x.remove()},3200)})(s)}}
+/* ui */
+function T(en,h){return hi?h:en}
+function picHtml(k,small){var p=PL[k];return p[5]?'<img src="assets/kids/'+p[5]+'.png" alt="">':(small?p[4]:'<span>'+p[4]+'</span>')}
+function setScene(k){var p=PL[k];$("pic").innerHTML=picHtml(k);$("sn").textContent=hi?p[2]:cap(p[0]);var e=$("sc");e.classList.remove("pop");void e.offsetWidth;e.classList.add("pop");
+ var j=(k==="glass"||k==="water")?maxPath:CH.indexOf(k);if(j>maxPath)maxPath=j;drawPath()}
+function drawPath(){var h="";for(var i=1;i<CH.length-1;i++){h+='<i class="'+(i<=maxPath?"on":"")+'" title="'+PL[CH[i]][0]+'">'+PL[CH[i]][4]+'</i>'}$("path").innerHTML=h}
+function labels(){$("nB").textContent=T("Boy","लड़का");$("nG").textContent=T("Girl","लड़की");$("ttl").textContent=T("💬 Where is the Water?","💬 पानी कहाँ है?");
+ $("sub").textContent=T("A story with a boy and a girl. Listen and follow the water!","लड़का और लड़की की कहानी। सुनो और पानी को ढूँढो!");
+ $("bp").textContent=playing?T("⏸ Pause","⏸ रुको"):(idx>0&&idx<S.length?T("▶ Continue","▶ आगे चलो"):T("▶ Start story","▶ कहानी शुरू करो"));$("bs").textContent=T("⏭ Next line","⏭ अगली लाइन");$("br").textContent=T("⏮ Start again","⏮ फिर से शुरू")}
+function addLine(l){var g=l[0]==="G",k=l[3],d=document.createElement("div");d.className="ln "+(g?"g":"b");
+ d.innerHTML='<div class="mini"><img src="assets/kids/'+(g?"story-girl":"story-boy")+'.webp" alt=""></div><div class="bb"><span>'+(hi?l[2]:l[1])+'</span><span class="ic">'+picHtml(k,true)+'</span></div>';$("log").appendChild(d);$("log").scrollTop=$("log").scrollHeight}
+function talk(g,v){$("wB").classList.toggle("talk",!g&&v);$("wG").classList.toggle("talk",!!g&&v)}
+function clearAsk(){$("ex").innerHTML=""}
+function show(i,after){var l=S[i],g=l[0]==="G",t=hi?l[2]:l[1],my=tok;idx=i+1;addLine(l);setScene(l[3]);talk(g,true);labels();
+ var last=i===S.length-1;
+ if(last){tone([700,900,700,900,1100],.1);}
+ speak(last?t.replace(/^(Aha ha ha!|हा हा हा!)/,hi?"हा हा हा हा!":"Ha ha ha ha!"):t,g,function(){if(my!==tok)return;talk(g,false);setTimeout(function(){if(my!==tok)return;after()},last?200:Math.round(550/ (rate+.1)))})}
+function step(){if(!playing)return;if(idx>=S.length)return finish();
+ var l=S[idx];
+ if(tap&&l[0]==="B"){var q=hi?l[2]:l[1];playing=false;labels();$("ex").innerHTML='<button class="ask" id="ak">👦 '+T("Tap to ask: ","दबाओ और पूछो: ")+q+'</button>';$("ak").onclick=function(){clearAsk();playing=true;labels();tok++;show(idx,step)};return}
+ show(idx,step)}
+function finish(){playing=false;tone([523,659,784,1047],.13);confetti();labels();
+ $("ex").innerHTML='<div class="end"><img src="assets/kids/mascot-chintu.png" alt="Chintu"><h2>'+T("The End 🎉","समाप्त 🎉")+'</h2><p>'+T("The water was in the pot all the time. Aha ha ha!","पानी तो मटके में ही था। हा हा हा!")+'</p></div>';$("ex").scrollIntoView({block:"nearest",behavior:"smooth"});
+ setTimeout(function(){speak(T("The End! Shabash!","समाप्त! शाबाश!"),true,function(){})},900)}
+function reset(){tok++;try{speechSynthesis.cancel()}catch(e){}playing=false;idx=0;maxPath=-1;$("log").innerHTML="";clearAsk();talk(false,false);$("pic").innerHTML="<span>🥛</span>";$("sn").textContent=T("A glass of water","एक गिलास पानी");drawPath();labels()}
+$("bp").onclick=function(){if(playing){playing=false;tok++;try{speechSynthesis.cancel()}catch(e){}talk(false,false);labels();return}
+ if(idx>=S.length)reset();clearAsk();playing=true;tok++;labels();step()};
+$("bs").onclick=function(){if(idx>=S.length)return;clearAsk();tok++;try{speechSynthesis.cancel()}catch(e){}playing=false;show(idx,function(){})};
+$("br").onclick=function(){reset();playing=true;labels();step()};
+function pr(ids,on_){ids.forEach(function(i){$(i).setAttribute("aria-pressed",i===on_)})}
+$("lE").onclick=function(){hi=false;pr(["lE","lH"],"lE");document.documentElement.lang="en";reset()};
+$("lH").onclick=function(){hi=true;pr(["lE","lH"],"lH");document.documentElement.lang="hi";reset()};
+$("mA").onclick=function(){tap=false;pr(["mA","mT"],"mA");clearAsk()};
+$("mT").onclick=function(){tap=true;pr(["mA","mT"],"mT")};
+$("sS").onclick=function(){rate=.7;pr(["sS","sN"],"sS")};$("sN").onclick=function(){rate=.9;pr(["sS","sN"],"sN")};
+$("snd").onclick=function(){on=!on;this.setAttribute("aria-pressed",on);this.textContent=on?"🔊 Sound on":"🔇 Sound off";if(!on)try{speechSynthesis.cancel()}catch(e){}};
+drawPath();labels();
+})();
+</script></body></html>
