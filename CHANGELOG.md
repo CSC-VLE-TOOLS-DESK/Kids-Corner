@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.6
+- Categories: the home page has a "Pick a category" hub (7 classes, 6 subjects, 5 more: Picture Games, Quiz Games, Lessons, Tables, Stories). Each opens category.html with all its cards. Class pages can be filtered by subject.
+- Both sidebars are 3D (tilt with the mouse, buttons pop out) on the home page and on every category page. Sidebar buttons now open the category page.
+- Back button on every page, and a Theme button (Light, Dark, Night, Ocean, Sunset, Forest, Candy) in the header. The choice is remembered.
+- Golu, the helper chatbot, on every page: asks which lesson, game or class to practise, understands English, Hinglish and Hindi words, and opens the right category.
+
 ## v3.5
 - New story game story-chat.html "Where is the Water?": a boy and a girl chat (different voices), with a picture for every place from the pot to the whole world, a path of places that lights up, English and Hindi, Auto story or Tap to play, slow or normal speed, and a laughing ending. Listed in the lessons under Class 2 GK.
 

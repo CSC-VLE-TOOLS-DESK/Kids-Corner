@@ -1,0 +1,6 @@
+/* Kids Corner v3.6: colour themes (Dark is in style.css). Change with the Theme button in the header. */
+:root[data-theme="ocean"]{--bg:#e6f5ff;--ink:#0b2a44;--mute:#4c6c88;--card:#fff;--line:#bde0f7;--v:#0369a1;--v2:#0ea5e9;--vd:#075985}
+:root[data-theme="sunset"]{--bg:#fff2e5;--ink:#3b1a0b;--mute:#86583a;--card:#fffaf5;--line:#ffd3b0;--v:#c2410c;--v2:#f97316;--vd:#9a3412}
+:root[data-theme="forest"]{--bg:#eef9ef;--ink:#12331a;--mute:#4c7755;--card:#fff;--line:#c3e9ca;--v:#15803d;--v2:#22c55e;--vd:#166534}
+:root[data-theme="candy"]{--bg:#fff0f7;--ink:#3b1030;--mute:#8a476f;--card:#fff;--line:#ffcde5;--v:#be185d;--v2:#ec4899;--vd:#9d174d}
+:root[data-theme="night"]{--bg:#0b1020;--ink:#e8eeff;--mute:#9fb0d6;--card:#141b34;--line:#26325c;--v:#4f46e5;--v2:#818cf8;--vd:#312e81}

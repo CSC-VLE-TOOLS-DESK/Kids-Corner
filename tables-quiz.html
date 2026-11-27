@@ -10,11 +10,11 @@
 .tq .side{position:sticky;top:12px}
 .tq .side .cls{margin-bottom:10px}
 .tq .cls .bd{font-weight:800;font-size:1.7rem}
-.tq .cls .bd.pic{background:#fff;border:3px solid var(--c);position:relative;width:62px;height:62px;border-radius:18px}
+.tq .cls .bd.pic{background:var(--card,#fff);border:3px solid var(--c);position:relative;width:62px;height:62px;border-radius:18px}
 .tq .cls .bd.pic img{width:40px;height:40px;object-fit:contain}
 .tq .cls .bd.pic i{position:absolute;right:-8px;bottom:-8px;min-width:26px;height:26px;border-radius:13px;background:#fff;border:2px solid var(--c);color:var(--c);font:800 .95rem/22px inherit;font-style:normal;text-align:center}
-.tq .cls{background:#fff}
-.rw{background:#fff!important;border-color:var(--line,#e6e0f5)!important}.bub2{display:none}
+.tq .cls{background:var(--card,#fff)}
+.rw{background:var(--card,#fff)!important;border-color:var(--line,#e6e0f5)!important}.bub2{display:none}
 .tq .cls small{white-space:nowrap}
 .mn{background:var(--card,#fff);border-radius:30px;padding:22px 24px 26px;box-shadow:0 8px 0 var(--line,#e6e0f5);position:relative;overflow:hidden;min-height:520px}
 .hd{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -50,7 +50,7 @@
 .say{margin-top:8px;font:inherit;font-weight:800;border:0;background:var(--c);color:#fff;border-radius:999px;padding:8px 16px;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.2)}
 .say:active{transform:translateY(3px);box-shadow:none}
 .ops{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px auto 6px;max-width:560px}
-.ops button{font:inherit;font-weight:800;font-size:clamp(1.7rem,5vw,2.4rem);padding:16px 8px;border-radius:22px;border:3px solid var(--line,#e6e0f5);background:#fff;color:var(--ink,#1d1340);cursor:pointer;box-shadow:0 7px 0 var(--line,#e6e0f5);transition:transform .15s,box-shadow .15s,background .15s}
+.ops button{font:inherit;font-weight:800;font-size:clamp(1.7rem,5vw,2.4rem);padding:16px 8px;border-radius:22px;border:3px solid var(--line,#e6e0f5);background:var(--card,#fff);color:var(--ink,#1d1340);cursor:pointer;box-shadow:0 7px 0 var(--line,#e6e0f5);transition:transform .15s,box-shadow .15s,background .15s}
 .ops button:hover:not(:disabled){transform:translateY(-4px) rotate(-1.5deg);border-color:var(--c)}
 .ops button:active:not(:disabled){transform:translateY(5px);box-shadow:0 2px 0 var(--line,#e6e0f5)}
 .ops button.ok{background:#d1fae5;border-color:#22a559;box-shadow:0 7px 0 #22a559;animation:hop .6s}
@@ -67,7 +67,9 @@
 .snd{position:absolute;right:16px;top:14px;font:inherit;border:0;border-radius:999px;background:var(--bg,#f4f1fb);padding:6px 12px;font-weight:800;cursor:pointer}
 @media (max-width:860px){.tq{grid-template-columns:1fr}.tq .side{position:static}.tq #tl{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.tq .cls{margin:0!important}.tq .cls small{display:none}.tabs2{margin-left:0}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
-</style></head>
+</style><script src="assets/js/shell.js"></script>
+<link rel="stylesheet" href="assets/css/themes.css">
+</head>
 <body><div class="wrap">
 <header class="top"><a class="logo" href="index.html"><img src="assets/img/logo.webp" alt="">Kids Corner</a>
 <nav><a href="index.html">Home</a><a href="games.html">Picture Games</a><a href="index.html#browse">Lessons</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="https://csc-vle-tools-desk.github.io/SewaSphere/" rel="noopener">SevaSphere</a></nav>

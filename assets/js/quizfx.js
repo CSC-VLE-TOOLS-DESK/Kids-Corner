@@ -43,9 +43,9 @@ var st=document.createElement("style");st.textContent=
 "@keyframes kfxSad{20%,60%{transform:translateX(-10px) rotate(-6deg)}40%,80%{transform:translateX(10px) rotate(6deg)}}"+
 "#kfxC{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:60}#kfxC span{position:absolute;top:-40px;animation:kfxFall linear forwards}@keyframes kfxFall{to{transform:translateY(110vh) rotate(540deg)}}"+
 ".qo.kfx{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:620px;margin:14px auto}"+
-".qo.kfx .opt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:130px;background:#fff!important;border:3px solid var(--line,#e6e0f5);border-radius:22px;box-shadow:0 7px 0 var(--line,#e6e0f5);padding:10px;font:inherit;font-weight:800;font-size:1.25rem;color:var(--ink,#1d1340);cursor:pointer;transition:transform .15s}"+
+".qo.kfx .opt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:130px;background:var(--card,#fff)!important;border:3px solid var(--line,#e6e0f5);border-radius:22px;box-shadow:0 7px 0 var(--line,#e6e0f5);padding:10px;font:inherit;font-weight:800;font-size:1.25rem;color:var(--ink,#1d1340);cursor:pointer;transition:transform .15s}"+
 ".qo.kfx .opt:hover:not(:disabled){transform:translateY(-4px) rotate(-1.2deg);border-color:#ffc928}.qo.kfx .opt img{height:70px;width:auto;max-width:100%;object-fit:contain}.qo.kfx .opt .kfx-e{font-size:3rem;line-height:1}"+
-".qo.kfx .opt.ok{border-color:#22a559;box-shadow:0 7px 0 #22a559;background:#fff!important}.qo.kfx .opt.no{border-color:#ef4444;box-shadow:0 7px 0 #ef4444;background:#fff!important}";
+".qo.kfx .opt.ok{border-color:#22a559;box-shadow:0 7px 0 #22a559;background:var(--card,#fff)!important}.qo.kfx .opt.no{border-color:#ef4444;box-shadow:0 7px 0 #ef4444;background:var(--card,#fff)!important}";
 document.head.appendChild(st);
 window.KCFX={act:act,speak:speak,tone:tone,good:good,bad:bad,ask:ask,perch:perch,pic:pic,confetti:confetti,clip:clip,
  img:function(w){return IMG[String(w).toLowerCase()]||""},

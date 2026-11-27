@@ -14,12 +14,12 @@
 .tb button[aria-pressed=true]{background:#7c4dff;color:#fff;box-shadow:0 3px 0 rgba(0,0,0,.2)}
 .stage{display:grid;grid-template-columns:150px 1fr 150px;gap:12px;align-items:end}
 .who{text-align:center}
-.who .fr{height:210px;width:140px;margin:0 auto;border:5px solid var(--c);border-radius:26px;background:#fff;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;box-shadow:0 7px 0 rgba(0,0,0,.1);transition:transform .2s}
+.who .fr{height:210px;width:140px;margin:0 auto;border:5px solid var(--c);border-radius:26px;background:var(--card,#fff);overflow:hidden;display:flex;align-items:flex-end;justify-content:center;box-shadow:0 7px 0 rgba(0,0,0,.1);transition:transform .2s}
 .who img{height:100%;width:auto;max-width:none;object-fit:cover;object-position:top}
 .who b{display:block;margin-top:8px;color:var(--c)}
 .who.talk .fr{animation:tk .45s infinite alternate;box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 30%,transparent),0 7px 0 rgba(0,0,0,.1)}
 @keyframes tk{to{transform:translateY(-10px) rotate(-2deg)}}
-.scene{background:#fff;border:4px dashed #cdbff7;border-radius:28px;padding:12px 12px 16px;text-align:center;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.scene{background:var(--card,#fff);border:4px dashed #cdbff7;border-radius:28px;padding:12px 12px 16px;text-align:center;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 .scene .pic{height:130px;display:flex;align-items:center;justify-content:center}
 .scene .pic img{height:130px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 6px 6px rgba(0,0,0,.2))}
 .scene .pic span{font-size:6.5rem;line-height:1}
@@ -35,7 +35,7 @@
 @keyframes in{from{opacity:0;transform:translateY(10px)}}
 .ln .mini{width:44px;height:44px;border-radius:50%;border:3px solid var(--c);overflow:hidden;flex:none;background:#fff}
 .ln .mini img{width:100%;height:100%;object-fit:cover;object-position:top}
-.ln .bb{background:#fff;border:3px solid var(--c);border-radius:20px;padding:8px 14px;font-weight:700;font-size:clamp(1.05rem,2.6vw,1.35rem);max-width:78%;display:flex;gap:10px;align-items:center}
+.ln .bb{background:var(--card,#fff);border:3px solid var(--c);border-radius:20px;padding:8px 14px;font-weight:700;font-size:clamp(1.05rem,2.6vw,1.35rem);max-width:78%;display:flex;gap:10px;align-items:center}
 .ln.b .bb{border-bottom-left-radius:4px}.ln.g .bb{border-bottom-right-radius:4px}
 .ln .bb .ic{font-size:1.6rem;flex:none}.ln .bb .ic img{height:34px;width:auto}
 .ln.b{--c:#3b82f6}.ln.g{--c:#ec4899}
@@ -53,7 +53,9 @@
 @keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
 @media (max-width:720px){.stage{grid-template-columns:96px 1fr 96px;gap:6px}.who .fr{width:90px;height:140px;border-width:4px}.scene{padding:8px;min-height:200px}.scene .pic,.scene .pic img{height:90px}.scene .pic span{font-size:4.5rem}.ln .bb{max-width:84%}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
-</style></head>
+</style><script src="assets/js/shell.js"></script>
+<link rel="stylesheet" href="assets/css/themes.css">
+</head>
 <body><div class="wrap">
 <header class="top"><a class="logo" href="index.html"><img src="assets/img/logo.webp" alt="">Kids Corner</a>
 <nav><a href="index.html">Home</a><a href="games.html">Picture Games</a><a href="index.html#browse">Lessons</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="https://csc-vle-tools-desk.github.io/SewaSphere/" rel="noopener">SevaSphere</a></nav>

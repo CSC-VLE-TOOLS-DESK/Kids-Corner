@@ -1,0 +1,28 @@
+/* Kids Corner v3.6: category tiles and category page */
+.cg{margin:18px 0 10px;font-size:1.15rem;color:var(--mute)}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;perspective:900px}
+.catt{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;background:var(--card);border:4px solid var(--line);border-radius:26px;padding:16px 10px 14px;text-decoration:none;color:var(--ink);box-shadow:0 7px 0 var(--line);transition:transform .22s cubic-bezier(.2,.9,.3,1.3),box-shadow .22s,border-color .15s;transform-style:preserve-3d}
+.catt .ci{width:78px;height:78px;border-radius:22px;background:var(--card);border:3px solid var(--c);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:800;color:var(--c);transition:transform .22s}
+.catt .ci img{width:100%;height:100%;object-fit:contain}
+.catt b{font-size:1.15rem}.catt small{color:var(--mute);font-weight:700}
+.catt:hover,.catt:focus-visible{transform:translateY(-8px) rotateX(8deg) scale(1.05);border-color:var(--c);box-shadow:0 16px 0 color-mix(in srgb,var(--c) 30%,transparent),0 22px 28px rgba(0,0,0,.2);outline:0}
+.catt:hover .ci{transform:translateZ(30px) rotate(-6deg) scale(1.1)}
+.cathero{display:grid;grid-template-columns:270px 1fr 270px;gap:22px;align-items:start;margin:8px 0 30px}
+.cathero .side{position:sticky;top:12px}
+.cathero .cls{width:100%;text-align:left;font:inherit;cursor:pointer;margin-bottom:10px;display:flex;align-items:center;gap:10px;background:var(--card);border:3px solid var(--line);border-radius:20px;padding:8px 10px;color:var(--ink)}
+.cathero .cls .bd{width:46px;height:46px;border-radius:14px;border:3px solid var(--c);background:var(--card);display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:800;color:var(--c);flex:none}
+.cathero .cls .bd.kid{width:56px;height:56px}
+.cathero .cls span:nth-child(2){flex:1;font-weight:800;line-height:1.1}.cathero .cls small{display:block;color:var(--mute);font-weight:600}
+.cathero .cls[aria-pressed=true]{border-color:var(--c);background:color-mix(in srgb,var(--c) 14%,var(--card))}
+.cm{background:var(--card);border-radius:30px;padding:20px 22px 26px;box-shadow:0 8px 0 var(--line);min-width:0}
+.cm .bk{display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:800;border:0;border-radius:999px;padding:8px 18px;background:var(--bg);color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--line);margin-bottom:10px}
+.cm .bk:hover{transform:translateX(-4px)}
+.cm h1{margin:0;font-size:clamp(1.6rem,3.6vw,2.4rem);display:flex;align-items:center;gap:12px}
+.cm h1 .ci{width:62px;height:62px;border-radius:18px;border:3px solid var(--c);display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--c);background:var(--card)}
+.cm h1 .ci img{width:100%;height:100%;object-fit:contain}
+.cm .ds{margin:6px 0 12px;color:var(--mute)}
+.cm .fl{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.cm .fl button{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.cm .fl button[aria-pressed=true]{background:var(--c);border-color:var(--c);color:#fff}
+.cm .empty{padding:30px;text-align:center;color:var(--mute)}
+@media (max-width:980px){.cathero{grid-template-columns:1fr}.cathero .side{position:static}.cathero #cl,.cathero #cr{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}.cathero .cls{margin:0}.cathero .cls small{display:none}}
