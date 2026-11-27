@@ -1,4 +1,4 @@
-var IT=[];LESSONS.forEach(function(l){IT.push({p:LPIC[l.id],k:"lesson",c:l.c,s:l.s,t:l.t,d:l.d,e:l.e,m:l.m,h:"lesson.html?id="+l.id});IT.push({p:LPIC[l.id],k:"game",c:l.c,s:l.s,t:l.t+" Quiz",d:"Play a quick quiz and win stars.",e:"🎮",m:"3 min",h:"lesson.html?id="+l.id+"&play=1"})});
+var IT=[];LESSONS.forEach(function(l){IT.push({p:LPIC[l.id],k:"lesson",c:l.c,s:l.s,t:l.t,d:l.d,e:l.e,m:l.m,h:(l.id==="c2-tables"?"tables.html":"lesson.html?id="+l.id)});IT.push({p:LPIC[l.id],k:"game",c:l.c,s:l.s,t:l.t+" Quiz",d:"Play a quick quiz and win stars.",e:"🎮",m:"3 min",h:(l.id==="c2-tables"?"tables.html#play":"lesson.html?id="+l.id+"&play=1")})});
 GAMES.forEach(function(g){IT.push({k:"game",c:g.c,s:g.s,t:g.t,d:"38 picture games with sound for KG, UKG and Class 1.",e:g.e,m:"Many",h:"games.html"})});
 var tab="all",cat="",sub="";
 function $(i){return document.getElementById(i)}
