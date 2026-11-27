@@ -10,7 +10,6 @@ Free games and easy lessons for KG to Class 5. A static website for GitHub Pages
 |---|---|
 | `index.html` | Home: class and subject filters, 38 picture-game cards, lessons and quiz cards |
 | `games.html` | The 38 picture games (English and Hindi). Open one with `games.html#abc` |
-| `tables.html` | Tables 2 to 10 with falling pictures and the Catch the Answer game. Open a table with `tables.html?t=5`. To write 2 × 3 instead of 3 × 2, change `ORDER` to `"tm"` at the top of `assets/js/tables.js` |
 | `lesson.html` | Flip-card lessons with read-aloud and a quiz. Open one with `lesson.html?id=kg-abc` (add `&play=1` for the quiz) |
 | `about.html`, `contact.html`, `disclaimer.html`, `404.html` | Info pages |
 

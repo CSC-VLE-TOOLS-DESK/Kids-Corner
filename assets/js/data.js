@@ -1,8 +1,8 @@
 var CL=[
 {id:"kg",n:"KG",s:"Letters, colours, rhymes",e:"🧸",c:"#ff6b6b",p:"l"},
 {id:"ukg",n:"UKG",s:"Words, numbers to 100",e:"🎈",c:"#ff9f43",p:"l"},
-{id:"c1",n:"Class 1",s:"Reading and adding",e:"1",c:"#e0a800",p:"l"},
-{id:"c2",n:"Class 2",s:"Tables and stories",e:"2",c:"#22a559",p:"r"},
+{id:"c1",n:"Class 1",s:"Reading and adding",e:"1",c:"#e0a800",p:"l",img:"class1-child.webp"},
+{id:"c2",n:"Class 2",s:"Tables and stories",e:"2",c:"#22a559",p:"r",img:"class2-kids.webp"},
 {id:"c3",n:"Class 3",s:"Maths and EVS",e:"3",c:"#14b8a6",p:"r"},
 {id:"c4",n:"Class 4",s:"Grammar and science",e:"4",c:"#3b82f6",p:"r"},
 {id:"c5",n:"Class 5",s:"Fractions and GK",e:"5",c:"#8b5cf6",p:"r"}];

@@ -1,0 +1,12 @@
+/* Kids Corner v3.2: 3D sidebar. Whole panel tilts with the mouse; each button pops out on hover. */
+.side[data-tilt]{transform-style:preserve-3d;transition:transform .18s ease-out,box-shadow .18s;will-change:transform;box-shadow:0 8px 0 var(--line,#e6e0f5),0 22px 34px rgba(60,30,120,.14)}
+.side[data-tilt]>*{transform:translateZ(14px)}
+.cls{position:relative;transform-style:preserve-3d;transition:transform .22s cubic-bezier(.2,.9,.3,1.3),box-shadow .22s,border-color .15s,background .15s;box-shadow:0 5px 0 rgba(0,0,0,.08)}
+.cls:hover,.cls:focus-visible{transform:translateZ(38px) translateX(8px) rotateY(-9deg) scale(1.04);box-shadow:-10px 12px 0 color-mix(in srgb,var(--c) 35%,transparent),0 20px 30px rgba(0,0,0,.2);z-index:3;outline:0}
+.cls:active{transform:translateZ(10px) scale(.98);box-shadow:0 2px 0 rgba(0,0,0,.12)}
+.cls .bd{transition:transform .22s;overflow:hidden}
+.cls:hover .bd{transform:translateZ(24px) rotate(-6deg) scale(1.12)}
+.cls .bd img{width:100%;height:100%;object-fit:contain;display:block}
+.cls .bd.kid{background:#fff;border:3px solid var(--c);width:60px;height:60px;border-radius:18px}
+@media (prefers-reduced-motion:reduce),(hover:none){.side[data-tilt]{transform:none!important}.cls:hover{transform:none}}
+.artimg.kidimg{width:auto;height:96px;object-fit:contain;filter:drop-shadow(0 6px 6px rgba(0,0,0,.25))}

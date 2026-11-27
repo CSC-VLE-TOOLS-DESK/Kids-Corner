@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>✖️ Tables 2 to 10 – Quiz – Kids Corner</title>
+<meta name="description" content="Learn and practise multiplication tables 2 to 10. A girl's voice reads each question, Chintu cheers every right answer.">
+<link rel="canonical" href="https://csc-vle-tools-desk.github.io/Kids-Corner/tables-quiz.html"><link rel="manifest" href="site.webmanifest"><link rel="icon" href="assets/img/logo.webp" type="image/webp">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/tilt3d.css">
+<style>
+.tq{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:start;margin:10px 0 30px}
+.tq .side{position:sticky;top:12px}
+.tq .side .cls{margin-bottom:10px}
+.tq .cls .bd{font-weight:800;font-size:1.7rem}
+.tq .cls small{white-space:nowrap}
+.mn{background:var(--card,#fff);border-radius:30px;padding:22px 24px 26px;box-shadow:0 8px 0 var(--line,#e6e0f5);position:relative;overflow:hidden;min-height:520px}
+.hd{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hd img.kk{height:110px;width:auto;filter:drop-shadow(0 6px 6px rgba(0,0,0,.2))}
+.hd h1{margin:0;font-size:clamp(1.5rem,3.4vw,2.2rem);line-height:1.1}
+.hd p{margin:4px 0 0;color:var(--mute,#6b6290)}
+.tabs2{margin-left:auto;display:flex;gap:8px}
+.tabs2 button{font:inherit;font-weight:800;border:0;border-radius:999px;padding:10px 18px;background:var(--bg,#f4f1fb);color:var(--ink,#1d1340);cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.1)}
+.tabs2 button[aria-selected=true]{background:var(--c,#22a559);color:#fff}
+/* learn view */
+.chart{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:18px}
+.rw{display:flex;align-items:center;gap:10px;font:inherit;font-weight:800;font-size:1.1rem;text-align:left;background:var(--bg,#f4f1fb);color:var(--ink,#1d1340);border:2px solid transparent;border-radius:18px;padding:8px 12px;cursor:pointer;transition:transform .15s,border-color .15s}
+.rw:hover{border-color:var(--c);transform:translateY(-3px) scale(1.02)}
+.rw b{color:var(--c);min-width:2.2ch}
+.rw .pics{display:flex;flex-wrap:wrap;gap:1px;margin-left:auto;max-width:112px;justify-content:flex-end}
+.rw .pics img{width:20px;height:20px;object-fit:contain}
+/* quiz view */
+.qz{margin-top:14px}
+.qtop{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-weight:800}
+.dots{display:flex;gap:5px;flex:1;min-width:120px}
+.dots i{flex:1;height:10px;border-radius:9px;background:var(--line,#e6e0f5)}
+.dots i.ok{background:#22a559}.dots i.no{background:#ef4444}.dots i.now{background:var(--c);animation:pu 1s infinite}
+@keyframes pu{50%{opacity:.4}}
+.stage{display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;margin:14px 0 6px}
+.chin{position:relative;width:120px;height:120px;flex:none}
+.chin img{width:100%;height:100%;object-fit:contain;transition:transform .2s}
+.chin.hop img{animation:hop .7s}.chin.sad img{animation:shk .5s}
+@keyframes hop{30%{transform:translateY(-22px) rotate(-8deg) scale(1.1)}60%{transform:translateY(0) rotate(6deg)}}
+@keyframes shk{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.qbub{background:var(--bg,#f4f1fb);border:3px solid var(--c);border-radius:24px;padding:14px 22px;text-align:center;min-width:230px}
+.qbub .q{font-size:clamp(2.4rem,7vw,4rem);font-weight:800;line-height:1;color:var(--ink,#1d1340)}
+.qbub .q em{font-style:normal;color:var(--c)}
+.say{margin-top:8px;font:inherit;font-weight:800;border:0;background:var(--c);color:#fff;border-radius:999px;padding:8px 16px;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.2)}
+.say:active{transform:translateY(3px);box-shadow:none}
+.ops{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:16px auto 6px;max-width:560px}
+.ops button{font:inherit;font-weight:800;font-size:clamp(1.7rem,5vw,2.4rem);padding:16px 8px;border-radius:22px;border:3px solid var(--line,#e6e0f5);background:#fff;color:var(--ink,#1d1340);cursor:pointer;box-shadow:0 7px 0 var(--line,#e6e0f5);transition:transform .15s,box-shadow .15s,background .15s}
+.ops button:hover:not(:disabled){transform:translateY(-4px) rotate(-1.5deg);border-color:var(--c)}
+.ops button:active:not(:disabled){transform:translateY(5px);box-shadow:0 2px 0 var(--line,#e6e0f5)}
+.ops button.ok{background:#d1fae5;border-color:#22a559;box-shadow:0 7px 0 #22a559;animation:hop .6s}
+.ops button.no{background:#fee2e2;border-color:#ef4444;box-shadow:0 7px 0 #ef4444;animation:shk .5s}
+.ops button:disabled{cursor:default}
+#fb{min-height:2.2em;text-align:center;font-weight:800;font-size:1.5rem;margin-top:10px;color:var(--c)}
+.end{text-align:center}
+.end img{height:170px;width:auto;filter:drop-shadow(0 8px 8px rgba(0,0,0,.2))}
+.end .st{font-size:3rem}
+.nv{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+#cf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:50}
+#cf span{position:absolute;top:-40px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg)}}
+.snd{position:absolute;right:16px;top:14px;font:inherit;border:0;border-radius:999px;background:var(--bg,#f4f1fb);padding:6px 12px;font-weight:800;cursor:pointer}
+@media (max-width:860px){.tq{grid-template-columns:1fr}.tq .side{position:static}.tq #tl{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.tq .cls{margin:0!important}.tq .cls small{display:none}.tabs2{margin-left:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="index.html"><img src="assets/img/logo.webp" alt="">Kids Corner</a>
+<nav><a href="index.html">Home</a><a href="games.html">Picture Games</a><a href="index.html#browse">Lessons</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="https://csc-vle-tools-desk.github.io/SewaSphere/" rel="noopener">SevaSphere</a></nav>
+<a class="btn g" href="https://wa.me/919050680789">Chat with Us</a></header>
+<main class="pg"><a class="back" href="index.html#browse">← All lessons</a>
+<div class="tq">
+ <aside class="side" aria-label="Choose a table"><h2>✖️ Tables</h2><p>Pick a table, then learn or play</p><div id="tl"></div></aside>
+ <section class="mn" id="mn" aria-live="polite">
+  <button class="snd" id="snd" aria-pressed="true">🔊 Sound on</button>
+  <div class="hd"><img class="kk" src="assets/kids/class2-kids.webp" alt=""><div><h1 id="ttl">Tables 2 to 10</h1><p id="sub">Learn it, then play the quiz!</p></div>
+   <div class="tabs2" role="tablist"><button id="tbL" aria-selected="true">📖 Learn</button><button id="tbQ" aria-selected="false">🎮 Quiz</button></div></div>
+  <div id="vw"></div>
+ </section>
+</div>
+<noscript><div class="panel">Kids Corner needs JavaScript. Please turn it on in your browser.</div></noscript>
+</main>
+<footer><div class="ft"><div><h4>Kids Corner</h4><p>Free games and easy lessons for KG to Class 5.</p></div>
+<div><h4>SevaSphere</h4><a class="btn y" style="font-size:1rem;padding:10px 20px" href="https://csc-vle-tools-desk.github.io/SewaSphere/" rel="noopener">Visit SevaSphere ↗</a></div>
+<div><h4>Quick Links</h4><div class="ql"><a href="index.html">Home</a> • <a href="games.html">Games</a> • <a href="index.html#browse">Lessons</a> • <a href="contact.html">Contact Us</a> • <a href="about.html">About</a> • <a href="disclaimer.html">Disclaimer</a></div></div></div>
+<div class="copy">© 2026 Kids Corner – part of SevaSphere, CSC VLE Tools Desk.</div></footer></div>
+<div id="cf" aria-hidden="true"></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)},R=function(n){return Math.floor(Math.random()*n)};
+function sh(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=R(i+1),t=a[i];a[i]=a[j];a[j]=t}return a}
+var COL=["#ff6b6b","#ff9f43","#e0a800","#22a559","#14b8a6","#3b82f6","#8b5cf6","#ec4899","#f97316"],
+    PIC=["apple","star","balloon","flower","ball","mango","duck","grapes","cat"],
+    TB=[2,3,4,5,6,7,8,9,10],WORD=["","one","two","three","four","five","six","seven","eight","nine","ten"];
+var cur=2,mixed=false,mode="learn",on=true;
+/* ---------- sound ---------- */
+var V=[];function lv(){try{V=speechSynthesis.getVoices()||[]}catch(e){}}
+if("speechSynthesis" in window){lv();speechSynthesis.onvoiceschanged=lv}
+var FEM=/female|zira|samantha|heera|veena|neerja|aria|jenny|karen|tessa|susan|priya|kalpana|swara|moira|fiona|victoria|hazel|libby|sonia/i;
+function voice(){var en=V.filter(function(v){return /^en/i.test(v.lang)}),f=en.filter(function(v){return FEM.test(v.name)});
+ return f.filter(function(v){return /IN/i.test(v.lang)})[0]||f[0]||en.filter(function(v){return /IN/i.test(v.lang)})[0]||en[0]||null}
+function speak(t,o){if(!on||!("speechSynthesis" in window))return;o=o||{};try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t),v=voice();u.lang="en-IN";if(v){u.voice=v;u.lang=v.lang}u.rate=o.rate||.88;u.pitch=o.pitch||1.15;speechSynthesis.speak(u)}catch(e){}}
+var ac;function tone(f,d,type){if(!on)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();var t=ac.currentTime;f.forEach(function(x,i){var o=ac.createOscillator(),g=ac.createGain();o.type=type||"sine";o.frequency.value=x;g.gain.setValueAtTime(.0001,t+i*d);g.gain.exponentialRampToValueAtTime(.35,t+i*d+.02);g.gain.exponentialRampToValueAtTime(.0001,t+(i+1)*d);o.connect(g);g.connect(ac.destination);o.start(t+i*d);o.stop(t+(i+1)*d+.03)})}catch(e){}}
+/* Chintu voice: plays assets/sounds/<name>.mp3 if you add it, otherwise a bright child-like voice */
+var miss={};
+function clip(name,fb){if(!on)return;if(miss[name]){fb();return}var done=false,a=new Audio("assets/sounds/"+name+".mp3"),f=function(){if(!done){done=true;miss[name]=1;fb()}};a.onerror=f;var p=a.play();if(p&&p.catch)p.catch(f)}
+var PRAISE=[["chintu-weldone","Well done!","Well done!"],["chintu-shabash","Shabash!","Shabaash!"],["chintu-good","Good!","Good!"],["chintu-marvel","Marvel!","Marvellous!"],["chintu-goodjob","Good job!","Good job!"]],last=-1;
+function praise(){var k;do{k=R(PRAISE.length)}while(k===last);last=k;var p=PRAISE[k];tone([660,880,1100],.09);
+ setTimeout(function(){clip(p[0],function(){speak(p[2],{pitch:1.8,rate:1.05})})},300);return p[1]}
+function tryAgain(){tone([260,200],.13,"triangle");setTimeout(function(){clip("chintu-tryagain",function(){speak("Try again!",{pitch:1.8,rate:1})})},280)}
+function confetti(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;var b=$("cf"),e=["⭐","🎈","🌟","🎉","✨","🍎","🎊"];for(var i=0;i<22;i++){var s=document.createElement("span");s.textContent=e[R(e.length)];s.style.left=R(100)+"%";s.style.fontSize=18+R(22)+"px";s.style.animationDuration=1.4+Math.random()*1.3+"s";b.appendChild(s);(function(x){setTimeout(function(){x.remove()},3000)})(s)}}
+function say(a,b){return WORD[a]+" "+(a===1?"":"")+"times "+WORD[b]+" equals"}
+/* ---------- sidebar ---------- */
+function side(){var h="";TB.forEach(function(t,i){h+='<button class="cls" style="--c:'+COL[i]+'" data-t="'+t+'" aria-pressed="'+(!mixed&&cur===t)+'"><span class="bd">'+t+'</span><span>Table of '+t+'<small>'+t+', '+2*t+', '+3*t+' …</small></span><b>›</b></button>'});
+ h+='<button class="cls" style="--c:#0ea5e9" data-t="0" aria-pressed="'+mixed+'"><span class="bd kid"><img src="assets/kids/kids3.webp" alt=""></span><span>Mixed Quiz<small>Tables 2 to 10</small></span><b>›</b></button>';$("tl").innerHTML=h}
+$("tl").onclick=function(e){var b=e.target.closest(".cls");if(!b)return;var t=+b.dataset.t;mixed=!t;if(t)cur=t;side();view();tone([520,780],.07)};
+/* ---------- views ---------- */
+function setMode(m){mode=m;$("tbL").setAttribute("aria-selected",m==="learn");$("tbQ").setAttribute("aria-selected",m==="quiz");view()}
+$("tbL").onclick=function(){setMode("learn")};$("tbQ").onclick=function(){setMode("quiz")};
+$("snd").onclick=function(){on=!on;this.setAttribute("aria-pressed",on);this.textContent=on?"🔊 Sound on":"🔇 Sound off";if(!on)try{speechSynthesis.cancel()}catch(e){}};
+function theme(){var c=mixed?"#0ea5e9":COL[TB.indexOf(cur)];$("mn").style.setProperty("--c",c)}
+function view(){theme();$("ttl").textContent=mixed?"Mixed Tables 2 to 10":"Table of "+cur;
+ $("sub").textContent=mode==="learn"?"Tap any line to hear it.":"Listen to the girl, then tap the right answer.";
+ if(mode==="learn")learn();else quiz()}
+function learn(){var ts=mixed?TB:[cur],h='<div class="chart">';
+ if(mixed){h='<div class="chart" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">'+TB.map(function(t,i){return '<button class="rw" style="--c:'+COL[i]+'" data-go="'+t+'"><img src="assets/kids/'+PIC[i]+'.png" alt="" width="40" height="40"><span>Table of <b>'+t+'</b></span></button>'}).join("")+'</div>';$("vw").innerHTML=h+'<div class="nv"><button class="btn y" id="go">🎮 Play the mixed quiz</button></div>';
+  $("vw").onclick=function(e){var b=e.target.closest("[data-go]");if(b){mixed=false;cur=+b.dataset.go;side();view()}};$("go").onclick=function(){setMode("quiz")};return}
+ var t=cur,i=TB.indexOf(t),p='<img src="assets/kids/'+PIC[i]+'.png" alt="">';
+ for(var m=1;m<=10;m++){var pics="";for(var k=0;k<m;k++)pics+=p;h+='<button class="rw" data-m="'+m+'"><b>'+t+'</b>×<b>'+m+'</b>=<b style="color:var(--ink)">'+t*m+'</b><span class="pics">'+pics+'</span></button>'}
+ $("vw").innerHTML=h+'</div><div class="nv"><button class="btn" id="rd">🔊 Read the whole table</button><button class="btn y" id="go">🎮 Play the quiz</button></div>';
+ $("vw").onclick=function(e){var b=e.target.closest(".rw");if(b){var m=+b.dataset.m;speak(say(t,m)+" "+t*m)}};
+ $("rd").onclick=function(){if(!on||!window.speechSynthesis)return;var s="";for(var m=1;m<=10;m++)s+=say(t,m)+" "+t*m+". ";speak(s,{rate:.8})};$("go").onclick=function(){setMode("quiz")}}
+/* ---------- quiz ---------- */
+var N=10,Q,qi,sc,tries,locked,res;
+function opts(a){var o=[a],g=0,d;while(o.length<4&&g++<80){d=a+(R(2)?1:-1)*(R(2)?(1+R(3)):cur&&!mixed?cur:(2+R(8)));if(d>0&&o.indexOf(d)<0)o.push(d)}return sh(o)}
+function build(){var r=[],used={},x,y,g;while(r.length<N){g=0;do{x=mixed?TB[R(9)]:cur;y=1+R(10);g++}while(used[x+"x"+y]&&g<50);used[x+"x"+y]=1;r.push({a:x,b:y,ans:x*y,o:opts(x*y)})}return r}
+function quiz(){Q=build();qi=0;sc=0;res=[];ask()}
+function dots(){var h="";for(var i=0;i<N;i++)h+='<i class="'+(res[i]||(i===qi?"now":""))+'"></i>';return h}
+function ask(){if(qi>=N)return end();var q=Q[qi];tries=0;locked=false;
+ $("vw").innerHTML='<div class="qz"><div class="qtop"><span>Question '+(qi+1)+' / '+N+'</span><div class="dots">'+dots()+'</div><span>⭐ '+sc+'</span></div>'+
+ '<div class="stage"><div class="chin" id="ch"><img src="assets/kids/mascot-chintu.png" alt="Chintu the parrot"></div><div class="qbub"><div class="q">'+q.a+' <em>×</em> '+q.b+' = ?</div><button class="say" id="rp">🔊 Read again</button></div></div>'+
+ '<div class="ops">'+q.o.map(function(o){return '<button data-v="'+o+'">'+o+'</button>'}).join("")+'</div><div id="fb"></div></div>';
+ $("rp").onclick=function(){speak(say(q.a,q.b)+"?")};setTimeout(function(){speak(say(q.a,q.b)+"?")},350);
+ document.querySelector(".ops").onclick=function(e){var b=e.target.closest("button");if(!b||b.disabled||locked)return;pick(b,q)}}
+function bump(c){var e=$("ch");if(!e)return;e.className="chin";void e.offsetWidth;e.className="chin "+c}
+function pick(b,q){var ok=+b.dataset.v===q.ans;
+ if(ok){locked=true;b.classList.add("ok");Array.prototype.forEach.call(document.querySelectorAll(".ops button"),function(x){x.disabled=true});$("fb").textContent=praise()+" 🎉";bump("hop");confetti();if(!tries){sc++;res[qi]="ok"}else res[qi]="no";setTimeout(function(){qi++;ask()},2000);return}
+ tries++;b.classList.add("no");b.disabled=true;bump("sad");tryAgain();
+ if(tries>=2){locked=true;Array.prototype.forEach.call(document.querySelectorAll(".ops button"),function(x){x.disabled=true;if(+x.dataset.v===q.ans)x.classList.add("ok")});res[qi]="no";$("fb").textContent="The answer is "+q.ans;setTimeout(function(){speak(say(q.a,q.b)+" "+q.ans)},1100);setTimeout(function(){qi++;ask()},3200)}
+ else $("fb").textContent="Try again! 💪"}
+function end(){var s=sc>=N?3:sc>=N-2?2:sc>=N/2?1:0;try{var k=JSON.parse(localStorage.getItem("kc_lessons")||"{}");if(s>(k["c2-tables"]||0)){k["c2-tables"]=s;localStorage.setItem("kc_lessons",JSON.stringify(k))}localStorage.setItem("kcStars",(+localStorage.getItem("kcStars")||0)+sc)}catch(e){}
+ var st="";for(var i=1;i<=3;i++)st+='<span style="color:'+(i<=s?"#f59e0b":"#d9d4ea")+'">★</span>';
+ $("vw").innerHTML='<div class="end"><img src="assets/kids/'+(s>1?"kids-play":"class1-child")+'.webp" alt=""><h2>You scored '+sc+' out of '+N+'</h2><div class="st">'+st+'</div><p>'+(s===3?"Perfect! Amazing work!":s?"Well done! Try again for more stars.":"Keep practising. Learn the table once more.")+'</p><div class="nv"><button class="btn y" id="ag">▶ Play again</button><button class="btn" id="bl">📖 Learn the table</button></div></div>';
+ if(s){tone([523,659,784,1047],.13);confetti();setTimeout(function(){speak(s===3?"Shabash! Perfect score!":"Well done!",{pitch:1.8,rate:1})},700)}
+ $("ag").onclick=quiz;$("bl").onclick=function(){setMode("learn")}}
+side();var h=location.hash.match(/t(\d+)/);if(h&&TB.indexOf(+h[1])>-1){cur=+h[1];side()}
+view();
+})();
+</script></body></html>
