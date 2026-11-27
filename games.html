@@ -347,7 +347,8 @@ body.kids-page main{max-width:1500px}
   <link rel="stylesheet" href="assets/css/candy3d.css">
   <script src="assets/js/candy3d.js" defer></script>
 <link rel="stylesheet" href="assets/css/mobile-fix.css">
-</head>
+<script src="assets/js/quizfx.js"></script>
+<style>.kc-mascot{width:112px}.kc-mascot .kfx-perch{margin:0}.kc-mascot .kfx-perch img{width:90px;height:90px;animation:none}.kc-mascot .kfx-perch.fly img{animation:kfxFly 1.5s ease-in-out}.kc-mascot .kfx-perch.sad img{animation:kfxSad .6s}.kc-mascot .kfx-b{left:62px;top:-14px}body:has(.kz .kfx-perch) .kc-mascot{display:none}.kz-chin{display:flex;justify-content:center;margin:2px 0 0}</style></head>
 <body class="kids-page">
 <header class="sa-top"><div class="in"><a class="sa-logo" href="index.html">Kids <b>Corner</b></a><a class="sa-more" href="https://csc-vle-tools-desk.github.io/SewaSphere/" rel="noopener" data-hi="&lt;i class=&quot;fa-solid fa-toolbox&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; और मुफ़्त टूल्स"><i class="fa-solid fa-toolbox" aria-hidden="true"></i> More free tools</a></div></header>
 <main id="main">
@@ -508,7 +509,7 @@ var IMGDATA = {"rishi":"assets/kids/rishi.png?v=1","ek-one":"assets/kids/ek-one.
   /* Chintu the parrot: small helper who cheers in every game */
   var chintuT;
   function chintu(t) {
-    var m = $('#kc-mascot'); if (!m) return; $('.kc-bubble', m).textContent = t;
+    return; var m = $('#kc-mascot'); if (!m) return; $('.kc-bubble', m).textContent = t;
     m.classList.remove('talk'); void m.offsetWidth; m.classList.add('talk'); clearTimeout(chintuT); chintuT = setTimeout(function () { m.classList.remove('talk'); }, 1700);
   }
   var _sg = sGood, _sb = sBad;
@@ -600,13 +601,13 @@ var IMGDATA = {"rishi":"assets/kids/rishi.png?v=1","ek-one":"assets/kids/ek-one.
     var i = 0, score = 0, total = cfg.total || 8;
     function round() {
       var q = cfg.make(), tries = 0;
-      body.innerHTML = (back ? '<div class="kz-tools"><button type="button" class="kb kb-alt" id="kz-learn"><i class="fa-solid fa-book-open" aria-hidden="true"></i> ' + back.label + '</button></div>' : '') + '<div class="kz"><div class="kz-bar" aria-hidden="true"><i style="width:' + (i / total * 100) + '%"></i></div>' +
+      body.innerHTML = (back ? '<div class="kz-tools"><button type="button" class="kb kb-alt" id="kz-learn"><i class="fa-solid fa-book-open" aria-hidden="true"></i> ' + back.label + '</button></div>' : '') + '<div class="kz"><div class="kz-chin">' + KCFX.perch() + '</div><div class="kz-bar" aria-hidden="true"><i style="width:' + (i / total * 100) + '%"></i></div>' +
         '<div class="kz-top"><span>' + L('Question ' + (i + 1) + ' of ' + total, 'प्रश्न ' + (i + 1) + ' / ' + total) + '</span><span>⭐ ' + score + '</span></div>' +
         '<div class="kz-prompt">' + q.prompt + (q.spoken ? '<button type="button" class="kb-say" aria-label="' + L('Hear it', 'सुनो') + '"><i class="fa-solid fa-volume-high" aria-hidden="true"></i></button>' : '') + '</div>' +
         '<div class="kz-opts ' + (q.cls || '') + '">' + q.opts.map(function (o, k) { return '<button type="button" class="kz-opt" data-k="' + k + '">' + o.html + '</button>'; }).join('') + '</div>' +
         '<p class="kz-msg" aria-live="polite"></p></div>';
       var msg = $('.kz-msg', body), sp = $('.kb-say', body); if (back) $('#kz-learn').onclick = back.fn;
-      if (sp) { sp.onclick = function () { speak(q.spoken.t, q.spoken.l); }; if (cfg.autoSpeak !== false) setTimeout(function () { speak(q.spoken.t, q.spoken.l); }, 250); }
+      if (sp) { sp.onclick = function () { qspeak(q.spoken.t, q.spoken.l); }; if (cfg.autoSpeak !== false) setTimeout(function () { qspeak(q.spoken.t, q.spoken.l); }, 250); }
       $$('.kz-opt', body).forEach(function (b) {
         b.onclick = function () {
           var o = q.opts[+b.getAttribute('data-k')];
@@ -623,6 +624,7 @@ var IMGDATA = {"rishi":"assets/kids/rishi.png?v=1","ek-one":"assets/kids/ek-one.
     }
     round();
   }
+  function qspeak(t, l) { speak((l === 'hi' ? 'पहचानो! ' : pick(['Guess! ', 'Pehchano! '])) + t, l); }
   function opts3(correct, pool, fmt, keyfn) {
     keyfn = keyfn || function (x) { return x; };
     var wrong = sample(pool, 2, [correct]);
@@ -992,16 +994,16 @@ var IMGDATA = {"rishi":"assets/kids/rishi.png?v=1","ek-one":"assets/kids/ek-one.
 
   /* ---------- v21 ---------- */
   var goodVoice = true, fxVol = store.get('kc_fx', 1), voVol = store.get('kc_vo', 1);
-  var FEM = /female|swara|lekha|kalpana|heera|neerja|aditi|raveena|priya|veena|google.*(hindi|हिन्दी)/i;
+  var FEM = /female|swara|lekha|kalpana|heera|neerja|aditi|raveena|priya|veena|zira|samantha|aria|jenny|karen|tessa|susan|hazel|libby|sonia|moira|fiona|victoria|google.*(hindi|हिन्दी)/i;
   function pickVoice(l) {
     var p = l === 'hi' ? 'hi' : 'en', c = voices.filter(function (x) { return x.lang && x.lang.toLowerCase().replace('_', '-').indexOf(p) === 0; });
-    if (l === 'hi') { var f = c.filter(function (x) { return FEM.test(x.name); }); if (f.length) return f[0]; }
+    var f = c.filter(function (x) { return FEM.test(x.name); }); if (f.length) return f[0];
     return c[0];
   }
   function thumb(up) { var e = document.createElement('div'); e.className = 'kthumb'; e.textContent = up ? '👍' : '👎'; document.body.appendChild(e); setTimeout(function () { e.remove(); }, 1100); }
   var _sg2 = sGood, _sb2 = sBad;
-  sGood = function () { _sg2(); thumb(1); if (goodVoice) speak(pick(L(['Good!', 'Well done!', 'OK, great!', 'Super!'], ['शाबाश!', 'बहुत बढ़िया!', 'वाह!', 'सही!'])), L('en', 'hi')); };
-  sBad = function () { _sb2(); thumb(0); speak(L('Try again', 'फिर से कोशिश करो'), L('en', 'hi')); };
+  sGood = function () { thumb(1); KCFX.mute(!soundOn || !goodVoice); KCFX.good(lang === 'hi', true); };
+  sBad = function () { thumb(0); KCFX.mute(!soundOn); KCFX.bad(lang === 'hi'); };
 
   /* Missing letter: fill the blank, show the whole word, say it and praise */
   function runMissing(body, act) {
@@ -1390,7 +1392,7 @@ var IMGDATA = {"rishi":"assets/kids/rishi.png?v=1","ek-one":"assets/kids/ek-one.
   function boot() {
     root = $('#kc-root'); if (!root) return;
     grid = $('#kc-grid'); stage = $('#kc-stage');
-    var mm = document.createElement('div'); mm.id = 'kc-mascot'; mm.className = 'kc-mascot'; mm.setAttribute('aria-hidden', 'true'); mm.innerHTML = img('mascot-chintu') + '<span class="kc-bubble"></span>'; root.appendChild(mm);
+    var mm = document.createElement('div'); mm.id = 'kc-mascot'; mm.className = 'kc-mascot'; mm.setAttribute('aria-hidden', 'true'); mm.innerHTML = KCFX.perch(); root.appendChild(mm);
     $$('.kc-tab').forEach(function (b) { b.onclick = function () { level = b.getAttribute('data-lv'); drawHome(); }; });
     var snd = $('#kc-sound'), setSnd = function () { snd.setAttribute('aria-pressed', soundOn); snd.innerHTML = '<i class="fa-solid ' + (soundOn ? 'fa-volume-high' : 'fa-volume-xmark') + '" aria-hidden="true"></i> ' + (soundOn ? L('Sound on', 'आवाज़ चालू') : L('Sound off', 'आवाज़ बंद')); };
     snd.onclick = function () { soundOn = !soundOn; store.set('kc_sound', soundOn); if (!soundOn && 'speechSynthesis' in window) window.speechSynthesis.cancel(); setSnd(); };

@@ -21,10 +21,10 @@ var BAD_EN=[["chintu-tryagain","Try again!","Try again!","en"],["chintu-phirse",
 var BAD_HI=[["chintu-phirse","फिर से कोशिश करो!","फिर से कोशिश करो!","hi"],["chintu-tryagain","Try again!","Try again!","en"]];
 function pick(a){var k;do{k=R(a.length)}while(a.length>1&&k===last);last=k;return a[k]}
 /* Chintu on the table */
-function perch(){return '<div class="kfx-perch" id="kfxP"><span class="kfx-b" id="kfxB"></span><img src="assets/kids/mascot-chintu.png" alt="Chintu the parrot"><i class="kfx-tb"></i></div>'}
-function act(cls,text){var p=document.getElementById("kfxP"),b=document.getElementById("kfxB");if(!p)return;b.textContent=text;p.className="kfx-perch";void p.offsetWidth;p.className="kfx-perch "+cls}
+function perch(){return '<div class="kfx-perch"><span class="kfx-b"></span><img src="assets/kids/mascot-chintu.png" alt="Chintu the parrot"><i class="kfx-tb"></i></div>'}
+function act(cls,text){var all=document.querySelectorAll(".kfx-perch"),p=null,i;for(i=0;i<all.length;i++){if(all[i].getClientRects().length)p=all[i]}if(!p)return;p.querySelector(".kfx-b").textContent=text;p.className="kfx-perch";void p.offsetWidth;p.className="kfx-perch "+cls}
 function say(p,cls,pitch){act(cls,p[1]);setTimeout(function(){clip(p[0],function(){speak(p[2],{lang:p[3],pitch:p[3]==="hi"?null:1.8,rate:1.02})})},cls==="fly"?350:250)}
-function good(hi){tone([660,880,1100],.09);var p=pick(hi?GOOD_HI:GOOD_EN);say(p,"fly");confetti();return p[1]}
+function good(hi,noConf){tone([660,880,1100],.09);var p=pick(hi?GOOD_HI:GOOD_EN);say(p,"fly");if(!noConf)confetti();return p[1]}
 function bad(hi){tone([260,200],.13,"triangle");var p=pick(hi?BAD_HI:BAD_EN);say(p,"sad");return p[1]}
 function confetti(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;var b=document.getElementById("kfxC");if(!b){b=document.createElement("div");b.id="kfxC";document.body.appendChild(b)}var e=["⭐","🎈","🌟","🎉","✨","🍎","🎊"];for(var i=0;i<22;i++){var s=document.createElement("span");s.textContent=e[R(e.length)];s.style.left=R(100)+"%";s.style.fontSize=18+R(22)+"px";s.style.animationDuration=1.4+Math.random()*1.3+"s";b.appendChild(s);(function(x){setTimeout(function(){x.remove()},3000)})(s)}}
 /* read the question aloud: "Guess!" / "Pehchano!" then the question */
@@ -47,7 +47,7 @@ var st=document.createElement("style");st.textContent=
 ".qo.kfx .opt:hover:not(:disabled){transform:translateY(-4px) rotate(-1.2deg);border-color:#ffc928}.qo.kfx .opt img{height:70px;width:auto;max-width:100%;object-fit:contain}.qo.kfx .opt .kfx-e{font-size:3rem;line-height:1}"+
 ".qo.kfx .opt.ok{border-color:#22a559;box-shadow:0 7px 0 #22a559;background:#fff!important}.qo.kfx .opt.no{border-color:#ef4444;box-shadow:0 7px 0 #ef4444;background:#fff!important}";
 document.head.appendChild(st);
-window.KCFX={speak:speak,tone:tone,good:good,bad:bad,ask:ask,perch:perch,pic:pic,confetti:confetti,clip:clip,
+window.KCFX={act:act,speak:speak,tone:tone,good:good,bad:bad,ask:ask,perch:perch,pic:pic,confetti:confetti,clip:clip,
  img:function(w){return IMG[String(w).toLowerCase()]||""},
  mute:function(v){on=!v;if(!on)try{speechSynthesis.cancel()}catch(e){}},isOn:function(){return on}};
 })();

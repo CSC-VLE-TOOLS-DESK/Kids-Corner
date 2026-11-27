@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.4
+- All 38 Picture Games (games.html) now use the same voice and Chintu: a girl reads each question ("Guess!" / "Pehchano!"), Chintu flies on his table and says Good, Well done, Shabash (Hindi: शाबाश, वाह) for a right answer, and Try again / Phir se koshish karo for a wrong one. Games without a quiz layout show Chintu on a table at the bottom left.
+
 ## v3.3
 - Every lesson quiz (A to Z Phonics, Hindi, Colours, Numbers, Add, Body parts and all others) now has the same voice quiz: a girl reads the question ("Guess!" / "Pehchano!"), Chintu sits on a table and flies saying Good, Well done, Shabash, Marvel, Good job (Hindi lessons: शाबाश, वाह). Wrong answer: "Try again" or "Phir se koshish karo". Shared code: assets/js/quizfx.js.
 - Answer cards use pictures on white cards instead of coloured backgrounds. Tables page sidebar and rows also use pictures.
