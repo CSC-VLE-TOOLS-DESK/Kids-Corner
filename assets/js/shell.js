@@ -49,7 +49,7 @@ function golu(){
  function bot(t){add("gm",t,true);speak(t)}
  function chips(list){var d=add("gc","");list.forEach(function(x){var e=document.createElement(x.h?"a":"button");e.textContent=x.t;if(x.c)e.style.setProperty("--c",x.c);if(x.h){e.href=x.h;if(x.go)e.className="go"}else e.onclick=function(){x.f()};d.appendChild(e)})}
  function main(){var cl=CATS.filter(function(c){return c.type==="class"}).map(function(c){return {t:c.n,c:c.c,f:function(){ask(c.n)}}});
-  var sp=[["🖼️ Picture Games","picture games"],["✖️ Tables","tables"],["💬 Story","story"],["🎮 Quiz","quiz"],["📖 Lessons","lessons"]].map(function(x){return {t:x[0],f:function(){ask(x[1])}}});
+  var sp=[["🖼️ Picture Games","picture games"],["✖️ Tables","tables"],["💬 Story","story"],["🎮 Quiz","quiz"],["🏫 Classroom","classroom"],["📖 Lessons","lessons"]].map(function(x){return {t:x[0],f:function(){ask(x[1])}}});
   var sj=SJ.map(function(c){return {t:c.e+" "+c.n,c:c.c,f:function(){ask(c.n)}}});chips(cl);chips(sj);chips(sp)}
  function need(cb){if(typeof CATS!=="undefined"&&typeof SJ!=="undefined")return cb();var n=0,L=function(src,next){var s=document.createElement("script");s.src=src;s.onload=next;s.onerror=next;document.head.appendChild(s)};L("assets/js/data.js",function(){L("assets/js/items.js",cb)})}
  function open(){p.classList.add("on");tip.classList.remove("on");if(!started){started=true;need(function(){bot("Namaste! Main Golu hoon 😊 Aapko konsa lesson, game, ya class ki practice karni hai?");main()})}setTimeout(function(){I.focus()},100)}
@@ -61,7 +61,7 @@ function golu(){
  /* understanding what the child types: English, Hinglish and Hindi words */
  var NUM={"pehli":1,"pahli":1,"doosri":2,"dusri":2,"teesri":3,"tisri":3,"chauthi":4,"paanchvi":5,"panchvi":5,"पहली":1,"दूसरी":2,"तीसरी":3,"चौथी":4,"पाँचवीं":5};
  var SUBJ={math:/math|ganit|गणित|jod|ghata|addition|subtract|number|ginti|गिनती|multipl|fraction|shape/,eng:/english|angrezi|अंग्रेज|phonics|abc|grammar|alphabet|opposite/,hindi:/hindi|हिंदी|हिन्दी|varnmala|swar|vyanjan|स्वर|व्यंजन/,evs:/evs|science|vigyan|विज्ञान|paryavaran|plant|animal|body|jaanwar|fruit|solar|health/,gk:/\bgk\b|general|gyan|ज्ञान|india|bharat|month|symbol|capital/,art:/\bart\b|drawing|colou?r|rang|रंग|painting/};
- var SPEC={tables:/table|pahada|pahade|पहाड़ा|पहाड़े/,stories:/story|kahani|कहानी|chat|paani|pani|water/,picgames:/picture|tasveer|photo|chitr|खेल|khel|game/,quiz:/quiz|test|sawal|practice|abhyas/,lessons:/lesson|video|padhai|पढ़ाई|padho|sikho/};
+ var SPEC={classroom:/blackboard|board|classroom|kiki|miki|teacher|bol ?ke|read aloud|bolo/,tables:/table|pahada|pahade|पहाड़ा|पहाड़े/,stories:/story|kahani|कहानी|chat|paani|pani|water/,picgames:/picture|tasveer|photo|chitr|खेल|khel|game/,quiz:/quiz|test|sawal|practice|abhyas/,lessons:/lesson|video|padhai|पढ़ाई|padho|sikho/};
  function ask(t){add("um",t,true);var s=t.toLowerCase(),cls="",sub="",sp="",m;
   if(/\bukg\b/.test(s))cls="ukg";else if(/\bkg\b/.test(s))cls="kg";
   else if((m=s.match(/(?:class|kaksha|कक्षा|cls)\s*([1-5])|\b([1-5])\s*(?:class|vi\b|st\b|nd\b|rd\b|th\b)/)))cls="c"+(m[1]||m[2]);

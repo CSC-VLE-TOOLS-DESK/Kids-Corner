@@ -14,7 +14,7 @@
 <main class="pg"><div class="lv"><a class="back" href="index.html#browse">← All lessons</a>
 <div class="panel" id="app"><h1>Loading…</h1></div>
 <noscript><div class="panel">Kids Corner needs JavaScript. Please turn it on in your browser.</div></noscript></div>
-<script src="assets/js/data.js"></script><script src="assets/js/quizfx.js"></script>
+<script src="assets/js/data.js"></script><script src="assets/js/quizfx.js"></script><script src="assets/js/classroom.js"></script>
 <script>
 (function(){
 var $=function(i){return document.getElementById(i)},app=$("app");
@@ -55,11 +55,11 @@ function lesson(){
     '<div><div class="sm">'+esc(k[0])+'</div><div class="big" style="font-size:clamp(1.8rem,6vw,3rem)">'+esc(k[1])+'</div>'+((KCFX.pic(k[1],c)||k[2])?'<div class="em">'+(KCFX.pic(k[1],c)||k[2])+'</div>':'')+'</div>':
     '<div><div class="big">'+esc(k[0])+'</div>'+(k[2]&&!/^\d|^[A-Za-z]$/.test(k[0])?'':'')+'<div class="sm">Tap to see more</div></div>')+'</div>'+
   '<div class="nv"><button class="btn" id="pv"'+(i?'':' disabled')+'>◀ Back</button><button class="btn" id="rd">🔊 Read aloud</button><button class="btn" id="nx"'+(i<c.length-1?'':' disabled')+'>Next ▶</button></div>'+
-  '<p style="text-align:center;margin-top:18px"><button class="btn y" id="pl">🎮 Play the quiz</button></p>';
+  '<p style="text-align:center;margin-top:18px"><button class="btn y" id="pl">🎮 Play the quiz</button> <button class="btn" id="kc" style="background:#1f4d3a;color:#fff">🏫 Join the class</button></p>';
   $("fc").onclick=function(){flip=!flip;show();if(flip)say(k[0]+". "+k[1],lg)};
   $("fc").onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();$("fc").click()}};
   $("pv").onclick=function(){i--;flip=false;show()};$("nx").onclick=function(){i++;flip=false;show()};
-  $("rd").onclick=function(){say(k[0]+". "+k[1],lg)};$("pl").onclick=quiz;
+  $("rd").onclick=function(){say(k[0]+". "+k[1],lg)};$("pl").onclick=quiz;$("kc").onclick=function(){KCClass.start(L,app)};
  }
  show();
 }
@@ -90,7 +90,7 @@ function quiz(){
  ask();
 }
 if(!L){app.innerHTML='<h1>Lesson not found</h1><p><a class="btn y" href="index.html#browse">See all lessons</a></p>'}
-else{document.title=L.t+" – Kids Corner";P.get("play")?quiz():lesson()}
+else{document.title=L.t+" – Kids Corner";P.get("class")?KCClass.start(L,app):P.get("play")?quiz():lesson()}
 })();
 </script></main>
 <footer><div class="ft"><div><h4>Kids Corner</h4><p>Free games and easy lessons for KG to Class 5.</p></div>

@@ -10,7 +10,7 @@ function draw(){
  var all=catItems(id,sub),list=all.filter(function(i){return tab==="all"||i.k===tab});
  $("ct").innerHTML='<span class="ci">'+(c.img?'<img src="assets/kids/'+c.img+'" alt="">':c.e)+'</span>'+c.n+(sub?' · '+SC[sub].n:'');
  $("cd").textContent=all.length+" cards · "+c.d;
- var f='<button data-t="all" aria-pressed="'+(tab==="all")+'">All</button><button data-t="game" aria-pressed="'+(tab==="game")+'">🎮 Games</button><button data-t="lesson" aria-pressed="'+(tab==="lesson")+'">▶ Lessons</button>';
+ var f='<button data-t="all" aria-pressed="'+(tab==="all")+'">All</button><button data-t="game" aria-pressed="'+(tab==="game")+'">🎮 Games</button><button data-t="lesson" aria-pressed="'+(tab==="lesson")+'">▶ Lessons</button><button data-t="class" aria-pressed="'+(tab==="class")+'">🏫 Class</button>';
  if(c.type==="class")f+='<span style="flex-basis:100%"></span><button data-s="" aria-pressed="'+(!sub)+'">All subjects</button>'+SJ.map(function(x){return '<button data-s="'+x.id+'" aria-pressed="'+(sub===x.id)+'">'+x.e+' '+x.n+'</button>'}).join("");
  $("fl").innerHTML=f;
  $("grid").innerHTML=list.map(cardHtml).join("")||'<p class="empty">Nothing here yet. Try another category from the sides.</p>';

@@ -11,7 +11,9 @@ if("speechSynthesis" in window){lv();speechSynthesis.onvoiceschanged=lv}
 var FEM=/female|zira|samantha|heera|veena|neerja|aria|jenny|karen|tessa|susan|priya|kalpana|swara|moira|fiona|victoria|hazel|libby|sonia|lekha|hemant/i;
 function voice(hi){var a=V.filter(function(v){return hi?/^hi/i.test(v.lang):/^en/i.test(v.lang)}),f=a.filter(function(v){return FEM.test(v.name)});
  return f.filter(function(v){return /IN/i.test(v.lang)})[0]||f[0]||a.filter(function(v){return /IN/i.test(v.lang)})[0]||a[0]||null}
-function speak(t,o){if(!on||!("speechSynthesis" in window))return;o=o||{};try{speechSynthesis.cancel();var hi=o.lang==="hi",u=new SpeechSynthesisUtterance(t),v=voice(hi);u.lang=hi?"hi-IN":"en-IN";if(v){u.voice=v;u.lang=v.lang}u.rate=o.rate||.88;u.pitch=o.pitch||(hi&&!(v&&FEM.test(v.name))?1.45:1.15);speechSynthesis.speak(u)}catch(e){}}
+function speak(t,o){o=o||{};var fin=false,tm,len=String(t).length,cb=o.done?function(){if(!fin){fin=true;clearTimeout(tm);o.done()}}:null;
+ if(!on||!("speechSynthesis" in window)){if(cb)tm=setTimeout(cb,900+len*55);return}
+ try{speechSynthesis.cancel();var hi=o.lang==="hi",u=new SpeechSynthesisUtterance(t),v=voice(hi);u.lang=hi?"hi-IN":"en-IN";if(v){u.voice=v;u.lang=v.lang}u.rate=o.rate||.88;u.pitch=o.pitch||(hi&&!(v&&FEM.test(v.name))?1.45:1.15);if(cb){u.onend=cb;u.onerror=cb;tm=setTimeout(cb,3500+len*140)}speechSynthesis.speak(u)}catch(e){if(cb)cb()}}
 function tone(f,d,type){if(!on)return;try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();var t=ac.currentTime;f.forEach(function(x,i){var o=ac.createOscillator(),g=ac.createGain();o.type=type||"sine";o.frequency.value=x;g.gain.setValueAtTime(.0001,t+i*d);g.gain.exponentialRampToValueAtTime(.35,t+i*d+.02);g.gain.exponentialRampToValueAtTime(.0001,t+(i+1)*d);o.connect(g);g.connect(ac.destination);o.start(t+i*d);o.stop(t+(i+1)*d+.03)})}catch(e){}}
 function clip(name,fb){if(!on)return;if(miss[name]){fb();return}var done=false,a=new Audio("assets/sounds/"+name+".mp3"),f=function(){if(!done){done=true;miss[name]=1;fb()}};a.onerror=f;var p=a.play();if(p&&p.catch)p.catch(f)}
 /* phrases: [file, shown text, spoken text, language] */

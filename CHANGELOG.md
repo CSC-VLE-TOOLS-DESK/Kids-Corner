@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.8
+- Classroom mode for every lesson ("🏫 Join the class" on each lesson, a "🏫 Class" card for every lesson, and a Classroom category). A blackboard shows the letter, Kiki and Miki welcome the class and the boy and girl sit at their desks. The voice says "Please read the letter on the board". Say it (microphone) or Tap it. Right: Good, Well done, Shabash, Accha and the next letter comes on the board. Wrong: Try again, Phir se koshish karen; after 3 tries the answer is told. Hint button, Skip, streak, progress and stars. Silent class mode (no sound) uses tapping. Files: assets/js/classroom.js.
+
 ## v3.7
 - Footer links to the sister sites: SevaSphere Dictation and House Expense (SevaSphere now links back to Kids Corner and Dictation).
 
