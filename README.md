@@ -3,7 +3,7 @@
 Free games and easy lessons for KG to Class 5. A static website for GitHub Pages.
 
 - Live site: https://csc-vle-tools-desk.github.io/Kids-Corner/
-- Sister site (free online tools): https://csc-vle-tools-desk.github.io/SewaSphere/
+- Sister site (free online tools): https://csc-vle-tools-desk.github.io/SevaSphere/
 
 ## Pages
 | File | What it is |
