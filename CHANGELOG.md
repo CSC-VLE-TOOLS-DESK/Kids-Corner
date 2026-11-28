@@ -1,5 +1,8 @@
 # Changelog
 
+## v3.7
+- Footer links to the sister sites: SevaSphere Dictation and House Expense (SevaSphere now links back to Kids Corner and Dictation).
+
 ## v3.6
 - Categories: the home page has a "Pick a category" hub (7 classes, 6 subjects, 5 more: Picture Games, Quiz Games, Lessons, Tables, Stories). Each opens category.html with all its cards. Class pages can be filtered by subject.
 - Both sidebars are 3D (tilt with the mouse, buttons pop out) on the home page and on every category page. Sidebar buttons now open the category page.
